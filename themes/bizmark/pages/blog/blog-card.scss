@@ -1,0 +1,62 @@
+@import "../../build/scss/variables";
+
+/* Block */
+
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+@import '../../partials/block/article/article';
+
+/* Section */
+@import '../../partials/section/useful-links/useful-links';
+
+
+.blog-card-section {
+    .article-header {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        .blog-card-bg {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -115px;
+            bottom: 0;
+            z-index: -1;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .date-block {
+            display: flex;
+            align-items: center;
+            .date-icon,
+            .date {
+                margin-right: 15px;
+            }
+        }
+    }
+    .article-description {
+        p {
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    .blog-card-section .article-header .section-title {
+        margin-bottom: 120px;
+    }
+}
+
+@media (max-width: 991px) {
+    .blog-card-section {
+        .article-header {
+            padding-top: 0;
+        }
+    }
+}

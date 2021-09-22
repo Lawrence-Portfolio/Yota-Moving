@@ -1,0 +1,9 @@
+fields:
+    question:
+        label: Вопрос
+        span: full
+
+    answer:
+        label: Ответ
+        span: full
+        type: textarea

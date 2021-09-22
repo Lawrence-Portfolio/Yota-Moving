@@ -1,0 +1,67 @@
+{% if categories is not empty %}
+<section class="service-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'Services'|_ }}</h2>
+        <div class="row">
+            <div class="col-lg-4 service-card">
+                <a href="{{ 'services/listing'|page({'slug':category.slug}) }}/{{ OffersList.offers[0].slug }}">
+                    <div class="service-wrap">
+                        <div class="icon">
+                            <div class="circle"></div>
+                        </div>
+                        <h3 class="h2">
+                            {{ OffersList.offers[0].name }}
+                        </h3>
+                        <svg class="svg-icon" width="11" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-right-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            {% if OffersList.offers[1] %}
+            <div class="col-lg-4 service-card">
+                <a href="{{ 'services/listing'|page }}/{{ OffersList.offers[1].slug }}">
+                    <div class="service-wrap">
+                        <div class="icon">
+                            <div class="circle"></div>
+                            <div class="dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="circle"></div>
+                        </div>
+                        <h3 class="h2">
+                            {{ OffersList.offers[1].name }}
+                        </h3>
+                        <svg class="svg-icon" width="11" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-right-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% if OffersList.offers[2] %}
+            <div class="col-lg-4 service-card">
+                <a href="{{ 'services/listing'|page }}/{{ OffersList.offers[2].slug }}">
+                    <div class="service-wrap">
+                        <div class="icon">
+                            <div class="square"></div>
+                        </div>
+                        <h3 class="h2">
+                            {{ OffersList.offers[2].name }}
+                        </h3>
+                        <svg class="svg-icon" width="11" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-right-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

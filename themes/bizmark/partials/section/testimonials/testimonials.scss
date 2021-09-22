@@ -1,0 +1,44 @@
+.testimonials-section {
+    position: relative;
+    padding-bottom: 80px;
+    .slider-wrap {
+        margin: 0 -90px;
+        padding: 0 80px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .testimonials-section {
+        .slider-wrap {
+            margin: 0px -30px;
+            padding: 0 60px;
+        }
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .testimonials-section {
+        .slider-wrap {
+            margin: 0px -15px;
+            padding: 0 60px;
+        }
+    }
+}
+@media (max-width: 991) {
+    .testimonials-section {
+        .slider-wrap {
+            margin: 0px -15px;
+            padding: 0 45px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .testimonials-section {
+        .slider-wrap {
+            margin: 0px -15px;
+            padding: 0 28px;
+        }
+    }
+}

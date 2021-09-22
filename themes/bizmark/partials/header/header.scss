@@ -1,0 +1,50 @@
+@import './top-bar/top-bar';
+@import './nav/nav';
+@import '../mobile/menu/menu';
+@import '../mobile/bottom-strip/bottom-strip';
+.main-header {
+    padding: 20px 0;
+    .logo {
+        img {
+            width: 111px;
+        }
+    }
+    .row {
+        align-items: center;
+    }
+    .left-section {
+        display: flex;
+        align-items: center;
+        .logo {
+            margin-right: 50px;
+        }
+    }
+    .right-section {
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .main-header {
+        .left-section {
+            margin-bottom: 40px;
+            justify-content: center;
+            .logo {
+                margin-right: 0;
+            }
+        }
+        .right-section {
+            display: flex;
+            justify-content: center;
+            .btn {
+                width: 172px;
+            }
+        }
+        .right-section {
+            display: none;
+        }
+    }
+}

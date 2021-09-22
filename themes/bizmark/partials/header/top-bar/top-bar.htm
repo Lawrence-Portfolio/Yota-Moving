@@ -1,0 +1,88 @@
+<div class="top-bar">
+    <div class="container">
+        <div class="top-bar-wrap">
+            <div class="top-bar-info">
+                {% if this.theme.contacts.phone %}
+                <a class="info-item" href="tel:{{ this.theme.contacts.phone }}">
+                    <span class="icon">
+                        <svg class="svg-icon" width="18" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#phone-icon'|theme }}"/>
+                        </svg>
+                    </span>
+                    {{ this.theme.contacts.phone }}
+                </a>
+                {% endif %}
+                {% if this.theme.contacts.email %}
+                <a class="info-item" href="mailto:{{ this.theme.contacts.email }}">
+                    <span class="icon">
+                        <svg class="svg-icon" width="18" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#evenlope-icon'|theme }}"/>
+                        </svg>
+                    </span>
+                    {{ this.theme.contacts.email }}
+                </a>
+                {% endif %}
+                {% if this.theme.contacts.address %}
+                <div class="info-item">
+                    <span class="icon">
+                        <svg class="svg-icon" width="18" height="18">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#mark-icon'|theme }}"/>
+                        </svg>
+                    </span>
+                    {{ this.theme.contacts.address }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="spacer"></div>
+            <div class="dropdown-lang">
+                {{ form_open() }}
+                <select name="locale" data-request="onSwitchLocale" class="form-control lang-select">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+                {{ form_close() }}
+            </div>
+            {#<div class="dropdown dropdown-lang">
+                {{ form_open() }}
+                <select name="locale" data-request="onSwitchLocale" class="form-control lang-select">
+                    {% for code, name in locales %}
+                        <option value="{{ code }}" {{ code == activeLocale ? 'selected' }}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+                {{ form_close() }}
+                <a class="dropdown-link" href="#" role="button" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg class="svg-icon lang-icon" width="18" height="18">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#lang-icon'|theme }}"/>
+                    </svg>
+                    English
+                    <svg class="svg-icon angle-down-icon" width="11" height="7">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-down-icon'|theme }}"/>
+                    </svg>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="languages">
+                    <ul class="dropdown-menu-wrap">
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">lang</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>#}
+        </div>
+    </div>
+</div>

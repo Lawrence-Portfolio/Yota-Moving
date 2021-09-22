@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+offers:
+    label: Услуги
+    manage:
+        form: $/bizmark/yota/models/offer/fields.yaml
+        list: $/bizmark/yota/models/offer/columns.yaml
+    view:
+        list: $/bizmark/yota/models/offer/columns.yaml
+        toolbarButtons: create|delete

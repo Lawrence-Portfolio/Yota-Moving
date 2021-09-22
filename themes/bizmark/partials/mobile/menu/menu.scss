@@ -1,0 +1,176 @@
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 60px);
+    top: 0;
+    left: -100%;
+    background-color: #fff;
+    transition: all .2s ease-in-out;
+    z-index: 50;
+    overflow: hidden;
+    .mobile-menu-header {
+        min-height: 100px;
+        .mobile-menu-header-wrap {
+            padding: 40px 15px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            .logo {
+                margin-right: 30px;
+            }
+            .mobile-contacts {
+                margin: -10px;
+                padding-bottom: 5px;
+            }
+            .mobile-contact {
+                font-size: 14px;
+                padding: 10px;
+                svg {
+                    margin-right: 5px;
+                    fill: #fff;
+                    stroke: $main_color;
+                }
+            }
+        }
+    }
+    .mobile-menu-body {
+        flex: 1;
+        .mobile-menu-body-wrap {
+            position: relative;
+            height: 100%;
+        }
+        .mobile-menu-cell {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-list {
+            overflow: auto;
+            padding: 0 15px;
+        }
+        .menu-title-wrap {
+            padding: 0 15px 15px;
+            display: flex;
+            .menu-title {
+                font-size: 25px;
+                font-weight: 700;
+            }
+            .back-cell {
+                padding-right: 30px;
+                padding-left: 10px;
+                svg {
+                    width: 9px;
+                }
+            }
+        }
+        
+        .mobile-list-item {
+            border-bottom: 1px solid #D2D2D2;
+            &:first-child {
+                border-top: 1px solid #D2D2D2;
+            }
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+        .mobile-list-link {
+            flex: 1;
+            display: block;
+            padding: 20px 0;
+            font-size: 18px;
+            
+        }
+        .has-dropdown-wrap {
+            display: flex;
+        }
+        .dropdown-menu-cell {
+            right: -100%;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .2s ease-in-out;
+        }
+        .dropdown-menu-cell.show {
+            right: 0;
+            visibility: visible;
+            opacity: 1;
+            background-color: #fff;
+        }
+
+        .cell-open {
+            padding: 0;
+            width: 60px;
+            svg {
+                width: 10px;
+            }
+        }
+    }
+    .mobile-menu-footer {
+        min-height: 60px;
+        background-color: $second_color;
+        .mobile-footer-wrap {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            .mobile-footer-link {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+    .btn-close-mobile-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.mobile-menu.show {
+    left: 0;
+}
+
+@media (min-width: 992px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+
+@media (max-width: 575px) {
+    .mobile-menu {
+        .mobile-menu-header {
+            .mobile-menu-header-wrap {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                .logo {
+                    margin-left: 0;
+                    margin-bottom: 20px;
+                }
+                .mobile-contacts {
+                    padding: 0;
+                    margin: 0;
+                }
+                .mobile-contact {
+                    display: flex;
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{% if this.theme.main.description_block %}
+<section class="description-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <picture>
+                    <img class="img-fluid" src="{{ this.theme.main.description_block.image|media }}" alt="Изображение">
+                </picture>
+            </div>
+            <div class="col-lg-6">
+                <div class="description">
+                    <h3 class="h1">
+                        {{ this.theme.main.description_block.title }}
+                    </h3>
+                    <p>
+                        {{ this.theme.main.description_block.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

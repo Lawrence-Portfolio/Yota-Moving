@@ -1,0 +1,16 @@
+{% if this.theme.advantages %}
+<section class="advantage-section">
+    <div class="container">
+        {% if title %}
+            <h2 class="h1 section-title">{{ title }}</h2>
+        {% endif %}
+        <div class="row">
+            {% for item in this.theme.advantages %}
+            <div class="col-lg-4 col-md-6 advantage-col">
+                {% partial 'block/card/advantage/advantage' item=item %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}

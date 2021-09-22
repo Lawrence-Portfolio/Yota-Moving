@@ -1,0 +1,93 @@
+@import "../../build/scss/variables";
+
+/* Block */
+
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+
+/* Form */
+
+@import '../../partials/form/free-quote/free-quote';
+
+
+/* Section */
+@import '../../partials/section/service-category/service-category';
+@import '../../partials/section/description/description';
+@import '../../partials/section/free-quote/free-quote';
+@import '../../partials/section/useful-links/useful-links';
+
+.category-section {
+    .container {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: -130px;
+            left: 380px;
+            width: 821px;
+            height: 602px;
+            background-image: url(../../assets/img/svg/picture/8.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+    }
+}
+
+.description-section {
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            width: 568px;
+            height: 452px;
+            position: absolute;
+            top: 40px;
+            left: -20px;
+            background-image: url(../../assets/img/svg/picture/4.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+            transform: rotate(-28deg) scale(0.95);
+        }
+        &::after {
+            content: "";
+            width: 674px;
+            height: 911px;
+            position: absolute;
+            top: 540px;
+            left: -520px;
+            background-image: url(../../assets/img/svg/picture/9.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .category-section .container::before {
+        top: -110px;
+        left: 300px;
+        width: 700px;
+        height: 495px;
+    }
+    .description-section .container {
+        &::after {
+            display: none;
+        }
+        &::before {
+            top: -40px;
+            left: -105px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .category-section .container::before {
+        display: none;
+    }
+    .description-section .container {
+        &::before {
+            display: none;
+        }
+    }
+}

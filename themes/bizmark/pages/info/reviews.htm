@@ -1,0 +1,76 @@
+url = "/reviews"
+layout = "default"
+title = "Отзывы"
+
+[emptyForm reviewsForm]
+group = "Отзывы"
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Новый отзыв на сайте"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/reviews.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/reviews.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+{% endput %}
+
+
+{% set links = [
+    {
+        title: 'Review'|_,
+        url: 'info/reviews'|page(),
+        active: true
+    }
+] %}
+
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+<section class="reviews-hero-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'Reviews'|_ }}</h2>
+        <div class="">
+            <button class="btn btn-primary-custom send-review" data-toggle="modal" data-target="#modal-review">{{ 'Send feedback'|page }}</button>
+            <div class="widget">
+                <div class="elfsight-app-a3b88df1-fcc0-41d7-a70f-b2078c7e9dbf"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% partial 'section/dignity/dignity' %}
+
+
+<section class="reviews-section">
+    <div class="container">
+        <div class="row">
+            {% for item in this.theme.testimonials %}
+            <div class="col-lg-6 review-col">
+                {% partial 'block/card/review/review' item=item %}
+            </div>
+            {% endfor %}
+        </div>
+        {% partial 'block/pagination/pagination' %}
+    </div>
+</section>
+
+{% put modals %}
+    {% partial 'modal/review' %}
+    {% partial 'modal/success' %}
+{% endput %}

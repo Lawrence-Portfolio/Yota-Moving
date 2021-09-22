@@ -1,0 +1,87 @@
+.service-section {
+    a:hover {
+        text-decoration: none;
+    }
+    .container {
+        position: relative;
+    }
+    .service-bg {
+        position: absolute;
+        right: -830px;
+        bottom: -400px;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .row {
+        margin: -10px;
+    }
+    .service-card {
+        padding: 10px;
+        .service-wrap {
+            position: relative;
+            padding: 40px 25px;
+            height: 234px;
+            background-color: $second_color;
+            border-radius: 15px;
+            &:hover {
+                .svg-icon {
+                    transform: rotate(-180deg);
+                }
+            }
+            .svg-icon {
+                position: absolute;
+                left: 200px;
+                bottom: 53px;
+                transition: all .3s ease-in-out;
+            }
+            .icon {
+                display: flex;
+                align-items: center;
+                margin-bottom: 30px;
+                .circle {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background: linear-gradient(270deg, #FFC444 0%, #F36F56 100%);
+                }
+                .square {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 5px;
+                    background: linear-gradient(270deg, #FFAF00 0%, #FF856D 100%);
+                }
+                .dots {
+                    display: flex;
+                    margin: 0 10px;
+                }
+                .dot {
+                    width: 11px;
+                    height: 5px;
+                    background-color: #646464;
+                    margin: 0 2px;
+                    border-radius: 10px;
+                }
+            }
+        }
+        &:nth-child(1) {
+            .service-wrap {
+                background-color: #FFE98F;
+            }
+        }
+        &:nth-child(2) {
+            .service-wrap {
+                background-color: #FFDC52;
+                .icon {
+                    .circle:last-child {
+                        background: linear-gradient(270deg, #FFCC00 0%, #FA4C2B 100%)
+                    }
+                }
+            }
+        }
+        &:nth-child(3) {
+            .service-wrap {
+                background-color: #FFCC00;
+            }
+        }
+    }
+}

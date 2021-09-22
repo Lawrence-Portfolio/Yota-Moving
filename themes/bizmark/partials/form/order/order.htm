@@ -1,0 +1,326 @@
+<script>
+    // var lang = {
+    //     step_1_enter_name: '{{ 'Step 1: Enter name'|_ }}',
+    //     last_name: '{{ 'Last name'|_ }}',
+    // };
+    var lang = {
+        step_1_title: '{{ 'Step 1: Enter name'|_ }}',
+        step_2_title: '{{ 'Step 2: Enter your contacts'|_ }}',
+        step_3_title: '{{ 'Step 3: How would you like us to contact like you?'|_ }}',
+        step_4_title: '{{ 'Step 4: How would you like us to contact like you?'|_ }}',
+        step_5_title: '{{ 'Step 5: Are these for home or business?'|_ }}',
+        step_6_title: '{{ 'Step 6: Origin Address'|_ }}',
+        step_7_title: '{{ 'Step 7: When will you need us?'|_ }}',
+        step_8_title: '{{ 'Step 8: Destination Address?'|_ }}',
+        step_9_title: '{{ 'Final: The order is made'|_ }}',
+
+        step_subtitle: '{{ 'What type of building?'|_ }}',
+        step_9_message: '{{ 'Your order has been placed. Our manager will contact you soon and confirm your request!'|_ }}',
+
+        step_2_checkbox: '{{ 'Would you like to keep in touch via email?'|_ }}',
+        dont_know_actual_date: '{{ 'Don’t know actual date'|_ }}',
+
+        fist_name: '{{ 'First name'|_ }}',
+        last_name: '{{ 'Last name'|_ }}',
+
+        email: '{{ 'Email'|_ }}',
+        phone: '{{ 'Phone'|_ }}',
+        text: '{{ 'Text'|_ }}',
+        address: '{{ 'Address'|_ }}',
+        date: '{{ 'Date'|_ }}',
+
+        move: '{{ 'Move'|_ }}',
+        supplies: '{{ 'Supplies'|_ }}',
+        storage: '{{ 'Storage'|_ }}',
+        pack: '{{ 'Pack'|_ }}',
+        rearranging: '{{ 'Rearranging'|_ }}',
+        load_and_unload: '{{ 'Load & Unload'|_ }}',
+        condo: '{{ 'Condo'|_ }}',
+        house: '{{ 'House'|_ }}',
+        apartment: '{{ 'Apartment'|_ }}',
+
+        home: '{{ 'Home'|_ }}',
+        business: '{{ 'Business'|_ }}',
+
+        company_name: '{{ 'Company name'|_ }}',
+        job_title: '{{ 'Job Title'|_ }}',
+
+        prev_step: '{{ 'Previous step'|_ }}',
+        next_step: '{{ 'Next step'|_ }}',
+        send_order: '{{ 'Send Order'|_ }}',
+
+        invalid_required: '{{ 'this field is required'|_ }}',
+        invalid_email_format: '{{ 'invalid email format'|_ }}'
+
+    }
+</script>
+<div id="app">
+    <form class="order-form" @submit="formSubmit" data-request="OrderQuote::onFormSubmit">
+        {{ form_token() }}
+        {% verbatim %}
+        <fieldset class="step" :class="{ 'show': !firstEntry || currStep == 0 }">
+            <div class="step-title">{{ lang.step_1_title }}</div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="first-name-order" class="form-label">{{ lang.fist_name }}</label>
+                    <input name="first-name" v-model="step1.firstName" id="first-name-order" class="form-control icon person-icon" :class="{ 'invalid': $v.step1.firstName.$dirty && $v.step1.firstName.$invalid }" type="text">
+                    <div class="invalid-message" v-show="$v.step1.firstName.$dirty && $v.step1.firstName.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="last-name-order" class="form-label">{{ lang.last_name }}</label>
+                    <input name="last-name" v-model="step1.lastName" id="last-name-order" class="form-control icon person-icon" :class="{ 'invalid': $v.step1.lastName.$dirty && $v.step1.lastName.$invalid }" type="text">
+                    <div class="invalid-message" v-show="$v.step1.lastName.$dirty && $v.step1.lastName.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next" @click="step1Validation">{{ lang.next_step }}</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 1 }">
+            <div class="step-title">{{ lang.step_2_title }}</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="email-order" class="form-label">{{ lang.email }}</label>
+                    <input name="email" v-model="step2.email" id="email-order" class="form-control icon email-icon" :class="{ 'invalid': $v.step2.email.$dirty && $v.step2.email.$invalid }" type="email">
+                    <div class="invalid-message" v-show="$v.step2.email.$dirty && !$v.step2.email.required">{{ lang.invalid_required }}</div>
+                    <div class="invalid-message" v-show="$v.step2.email.$dirty && $v.step2.email.required && $v.step2.email.$invalid">{{ lang.invalid_email_format }}</div>
+                </div>
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="phone-order" class="form-label">{{ lang.phone }}</label>
+                    <input name="phone" v-model="step2.phone" id="phone-order" :class="{ 'invalid': $v.step2.phone.$dirty && $v.step2.phone.$invalid }" class="form-control icon phone-icon" data-phone="true" type="text">
+                    <div class="invalid-message" v-show="$v.step2.phone.$dirty && $v.step2.phone.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <div class="custom-control checkbox-block">
+                        <input id="keep-email-order" class="custom-control-input" type="checkbox" name="keep_email" value="Keep in touch via email">
+                        <label for="keep-email-order" class="custom-control-label">{{ lang.step_2_checkbox }}</label>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev" @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next" @click="step2Validation">{{ lang.next_step }}</button>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 2 }">
+            <div class="step-title">{{ lang.step_3_title }}</div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="phone-radio-order" class="custom-control-input custom-radio-input" type="radio" name="contact" value="Phone" checked>
+                    <label for="phone-radio-order" class="custom-control-label custom-radio-label">{{ lang.phone }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="email-radio-order" class="custom-control-input custom-radio-input" type="radio" name="contact" value="Email">
+                    <label for="email-radio-order" class="custom-control-label custom-radio-label">{{ lang.email }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="text-radio-order" class="custom-control-input custom-radio-input" type="radio" name="contact" value="Text">
+                    <label for="text-radio-order" class="custom-control-label custom-radio-label">{{ lang.text }}</label>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev"  @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next"  @click="currStep++">{{ lang.next_step }}</button>
+                </div>
+            </div>
+
+
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 3 }">
+            <div class="step-title">{{ lang.step_4_title }}</div>
+            <div class="row first-row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="move-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Move" checked>
+                    <label for="move-radio-order" class="custom-control-label custom-radio-label">{{ lang.move }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="supplies-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Supplies">
+                    <label for="supplies-radio-order" class="custom-control-label custom-radio-label">{{ lang.supplies }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="storage-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Storage">
+                    <label for="storage-radio-order" class="custom-control-label custom-radio-label">{{ lang.storage }}</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="pack-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Pack">
+                    <label for="pack-radio-order" class="custom-control-label custom-radio-label">{{ lang.pack }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="rearranging-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Rearranging">
+                    <label for="rearranging-radio-order" class="custom-control-label custom-radio-label">{{ lang.rearranging }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="load-unload-radio-order" class="custom-control-input custom-radio-input" type="radio" name="service" value="Load & Unload">
+                    <label for="load-unload-radio-order" class="custom-control-label custom-radio-label">{{ lang.load_and_unload }}</label>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev"  @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next"  @click="currStep++">{{ lang.next_step }}</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 4 }">
+            <div class="step-title">{{ lang.step_5_title }}</div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="delivery-home-radio-order" class="custom-control-input custom-radio-input" type="radio" name="delivery_type" value="Home" checked>
+                    <label for="delivery-home-radio-order" class="custom-control-label custom-radio-label">{{ lang.home }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="delivery-business-radio-order" class="custom-control-input custom-radio-input" type="radio" name="delivery_type" value="Business">
+                    <label for="delivery-business-radio-order" class="custom-control-label custom-radio-label">{{ lang.business }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="company-name-order" class="form-label">{{ lang.company_name }}</label>
+                    <input v-model="step5.companyName" id="company-name-order" :class="{ 'invalid': $v.step5.companyName.$dirty && $v.step5.companyName.$invalid }" class="form-control" type="text" name="company_name">
+                    <div class="invalid-message" v-show="$v.step5.companyName.$dirty && $v.step5.companyName.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="job-title-order" class="form-label">{{ lang.job_title }}</label>
+                    <input v-model="step5.jobTitle" id="job-title-order" :class="{ 'invalid': $v.step5.jobTitle.$dirty && $v.step5.jobTitle.$invalid }" class="form-control" type="text" name="job_title">
+                    <div class="invalid-message" v-show="$v.step5.jobTitle.$dirty && $v.step5.jobTitle.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev"  @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next"  @click="step5Validation">{{ lang.next_step }}</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 5 }">
+            <div class="step-title">{{ lang.step_6_title }}</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="origin-name-order" class="form-label">{{ lang.address }}</label>
+                    <input v-model="step6.address" id="origin-name-order" :class="{ 'invalid': $v.step6.address.$dirty && $v.step6.address.$invalid }" class="form-control" type="text" name="origin_address">
+                    <div class="invalid-message" v-show="$v.step6.address.$dirty && $v.step6.address.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+            </div>
+            <div class="step-subtitle">{{ lang.step_subtitle }}</div>
+            <div class="row first-row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="origin-condo-radio-order" class="custom-control-input custom-radio-input" type="radio" name="origin_building" value="Condo" checked>
+                    <label for="origin-condo-radio-order" class="custom-control-label custom-radio-label">{{ lang.condo }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="origin-house-radio-order" class="custom-control-input custom-radio-input" type="radio" name="origin_building" value="House">
+                    <label for="origin-house-radio-order" class="custom-control-label custom-radio-label">{{ lang.house }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="origin-apartament-radio-order" class="custom-control-input custom-radio-input" type="radio" name="origin_building" value="Apartment">
+                    <label for="origin-apartament-radio-order" class="custom-control-label custom-radio-label">{{ lang.apartment }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="origin-rearranging-radio-order" class="custom-control-input custom-radio-input" type="radio" name="origin_building" value="Rearranging">
+                    <label for="origin-rearranging-radio-order" class="custom-control-label custom-radio-label">{{ lang.rearranging }}</label>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev"  @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next"  @click="step6Validation">{{ lang.next_step }}</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 6 }">
+            <div class="step-title">{{ lang.step_7_title }}</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="date-order" class="form-label">{{ lang.date }}</label>
+                    <input id="date-order" class="form-control calendar-icon" type="date" name="date" v-bind:disabled="step7.noDateCheckbox">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <div class="custom-control checkbox-block">
+                        <input v-model="step7.noDateCheckbox" id="date-skip-1-order" class="custom-control-input" type="checkbox" name="date_skip" value="Don`t know actual date">
+                        <label for="date-skip-1-order" class="custom-control-label">{{ lang.dont_know_actual_date }}</label>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev"  @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-next"  @click="currStep++">{{ lang.next_step }}</button>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="step" :class="{ 'show': currStep == 7 }">
+            <div class="step-title">{{ lang.step_8_title }}</div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 form-group">
+                    <label for="destination-address-order" class="form-label">{{ lang.address }}</label>
+                    <input v-model="step8.address" id="destination-address-order" :class="{ 'invalid': $v.step8.address.$dirty && $v.step8.address.$invalid }" class="form-control" type="text" name="destination_address">
+                    <div class="invalid-message" v-show="$v.step8.address.$dirty && $v.step8.address.$invalid">{{ lang.invalid_required }}</div>
+                </div>
+            </div>
+            <div class="step-subtitle">{{ lang.step_subtitle }}</div>
+            <div class="row first-row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="destination-condo-radio-order" class="custom-control-input custom-radio-input" type="radio" name="destination_building" value="Condo" checked>
+                    <label for="destination-condo-radio-order" class="custom-control-label custom-radio-label">{{ lang.condo }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="destination-house-radio-order" class="custom-control-input custom-radio-input" type="radio" name="destination_building" value="House" >
+                    <label for="destination-house-radio-order" class="custom-control-label custom-radio-label">{{ lang.house }}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="destination-apartament-radio-order" class="custom-control-input custom-radio-input" type="radio" name="destination_building" value="Apartment">
+                    <label for="destination-apartament-radio-order" class="custom-control-label custom-radio-label">{{ lang.apartment }}</label>
+                </div>
+                <div class="col-lg-2 col-md-4 form-group">
+                    <input id="destination-rearranging-radio-order" class="custom-control-input custom-radio-input" type="radio" name="destination_building" value="Rearranging">
+                    <label for="destination-rearranging-radio-order" class="custom-control-label custom-radio-label">{{ lang.rearranging }}</label>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="button" class="btn btn-primary-custom btn-prev" @click="currStep--">{{ lang.prev_step }}</button>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 form-group">
+                    <button type="submit" class="btn btn-primary-custom">{{ lang.send_order }}</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="step final-step" :class="{ 'show': currStep == 8 }">
+        <div class="step-title">{{ lang.step_9_title }}</div>
+        <div class="success-message">
+            <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M34.5071 15.5C33.85 14.8333 32.8643 14.8333 32.2071 15.5L19.8857 28L14.7929 22.8333V22.8333C14.1357 22.1667 13.15 22.1667 12.4929 22.8333C11.8357 23.5 11.8357 24.5 12.4929 25.1667L18.7357 31.5C19.0643 31.8333 19.3929 32 19.8857 32C20.3786 32 20.7071 31.8333 21.0357 31.5L34.5071 17.8333C35.1643 17.1667 35.1643 16.1667 34.5071 15.5Z" fill="#2B478B"/>
+                <circle cx="23.5" cy="23.5" r="21.5" stroke="#FFCC00" stroke-width="4"/>
+            </svg>
+            <div class="message">
+                {{ lang.step_9_message }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endverbatim %}

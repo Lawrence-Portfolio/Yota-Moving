@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Категория услуг
+
+# Model Form Field configuration
+form: $/bizmark/yota/models/category/fields.yaml
+
+# Model Class name
+modelClass: BizMark\Yota\Models\Category
+
+# Default redirect location
+defaultRedirect: bizmark/yota/categories
+
+# Create page
+create:
+    title: Создание категории услуг
+    redirect: bizmark/yota/categories/update/:id
+    redirectClose: bizmark/yota/categories
+
+# Update page
+update:
+    title: Обновление категории услуг
+    redirect: bizmark/yota/categories
+    redirectClose: bizmark/yota/categories
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

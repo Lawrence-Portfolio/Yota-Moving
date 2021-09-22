@@ -1,0 +1,7 @@
+<div class="slider" id="reviews-slider">
+    {% for item in this.theme.testimonials %}
+    <div class="slider-item">
+        {% partial 'block/card/review/review' item=item %}
+    </div>
+    {% endfor %}
+</div>

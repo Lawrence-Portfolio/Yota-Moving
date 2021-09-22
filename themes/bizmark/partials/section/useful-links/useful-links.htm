@@ -1,0 +1,27 @@
+<section class="useful-links-section">
+    <div class="container">
+        <h2 class="h1 section-title">
+            {{ 'Useful links'|_ }}
+        </h2>
+        <div class="row">
+            {% for link in useful_links %}
+            <div class="col-link col-lg-3 col-md-6">
+                <a href="{{ link.url|page }}">
+                    <div class="link-wrap">
+                        <h3 class="h2">{{ link.title }}</h3>
+                        <p>
+                            {{ link.description|raw }}
+                        </p>
+                        <div class="learn-more">
+                            {{ 'Learn more'|_ }}
+                            <svg class="svg-icon" width="11px" height="18px">
+                                <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-right-icon'|theme }}" />
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+fields:
+    page:
+        label: Название страницы
+        span: left
+
+    link:
+        label: Ссылка на страницу
+        span: right

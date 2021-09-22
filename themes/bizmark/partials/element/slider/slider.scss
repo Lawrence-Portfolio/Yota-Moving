@@ -1,0 +1,80 @@
+.slider-wrap {
+    position: relative;
+    margin: -10px;
+}
+
+.slider {
+    .slider-card {
+        margin: 10px;
+    }
+}
+.tns-ovh {
+    margin-bottom: 40px;
+}
+.tns-controls {
+    button {
+        position: absolute;
+        top: calc(50% - 27px - 32px);
+        width: 54px;
+        height: 54px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $second_color_hover;
+        border: none;
+        border-radius: 50%;
+        transition: all .2s ease-in-out;
+        &:hover {
+            background-color: $second_color;
+        }
+    }
+    button[data-controls="prev"] {
+        left: 0;
+    }
+    button[data-controls="next"] {
+        right: 0;
+    }
+}
+.tns-nav {
+    text-align: center;
+    button {
+        padding: 0;
+        width: 6px;
+        height: 6px;
+        background-color: #D0D9FA;
+        border: none;
+        border-radius: 50%;
+        margin: 2px;
+    }
+    button.tns-nav-active {
+        background-color: #6165D7;
+    }
+}
+
+@media (max-width: 575px) {
+    .tns-ovh {
+        margin-bottom: 20px;
+    }
+    .tns-controls {
+        button {
+            position: absolute;
+            top: calc(50% - 13.5px - 19px);
+            width: 38px;
+            height: 38px;
+            border-radius: 0;
+            z-index: 50;
+            &:hover {
+                background-color: $second_color;
+            }
+            svg {
+                width: 8px;
+            }
+        }
+        button[data-controls="prev"] {
+            left: 0;
+        }
+        button[data-controls="next"] {
+            right: 0;
+        }
+    }
+}

@@ -1,0 +1,90 @@
+url = "/blog/:slug"
+layout = "default"
+title = "Card"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/listing"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/blog-card.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/blog-card.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+{% endput %}
+
+{% set post = blogPost.post %}
+{% set links = [
+    { 
+        title: 'Blog',
+        url: 'blog/listing',
+        active: false
+    },
+    { 
+        title: 'Card',
+        url: 'blog/card',
+        active: true
+    },
+] %}
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+<section class="blog-card-section">
+    <article>
+        <div class="article-header">
+            <div class="container">
+                <h1 class="h1 section-title">{{ post.title }}</h1>
+                <div class="date-block">
+                    <svg class="date-icon" width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.75 8V9.5H3.25V8H4.75ZM4.75 11V12.5H3.25V11H4.75ZM6.25 8V9.5H7.75V8H6.25ZM7.75 11V12.5H6.25V11H7.75ZM9.25 8V9.5H10.75V8H9.25ZM10.75 11V12.5H9.25V11H10.75ZM12.25 15.5H1.75C0.92275 15.5 0.25 14.8273 0.25 14V3.5C0.25 2.67275 0.92275 2 1.75 2H3.25V0.5H4.75V2H9.25V0.5H10.75V2H12.25C13.0773 2 13.75 2.67275 13.75 3.5V14C13.75 14.8273 13.0773 15.5 12.25 15.5ZM12.2501 5L12.25 3.5H1.75V5H12.2501ZM12.2502 6.5L12.2507 14H1.75V6.5H12.2502Z" fill="black"/>
+                    </svg>                
+                    <span class="date">{{ post.published_at|date('d.m.Y') }}</span>
+
+                    {% if post.categories.count %}
+                        {% for category in post.categories %}
+                            <span>{{ category.name }}</span>{% if not loop.last %},&nbsp{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="blog-card-bg" style="background-image: url({{ 'assets/img/jpg/blog-card-bg.jpg'|theme }});"></div>
+        </div>
+        <div class="article-description">
+            <div class="container fr-view">
+                {{ post.content_html|raw }}
+            </div>
+        </div>
+    </article>
+</section>
+
+
+{% set useful_links = [
+    {
+        title: 'FAQ',
+        description: 'Ответы <br> на популярные вопросы.',
+        link: '#'
+    },
+    {
+        title: 'Blog',
+        description: 'Делимся интересными <br> статьями о грузоперевозках.',
+        link: '#'
+    },
+    {
+        title: 'Reviews',
+        description: 'Отзывы <br> наших клиентов.',
+        link: '#'
+    },
+    {
+        title: 'About us',
+        description: 'Информация <br> о нашей компании.',
+        link: '#'
+    },
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}

@@ -1,0 +1,140 @@
+<footer>
+    <div class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 footer-col">
+                    <a class="logo" href="/">
+                        <picture>
+                            <img class="img-fluid" src="{{ 'assets/img/logo.svg'|theme }}" alt="YOTA Moving Company">
+                        </picture>
+                    </a>
+                    <div class="sotial-links">
+                        {% if this.theme.contacts.facebook %}
+                        <a href="{{ this.theme.contacts.facebook }}" target="_blank" class="sotial-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.01" x="24" y="24" width="24" height="24" transform="rotate(180 24 24)" fill="#6165D7"/>
+                                <path d="M17 3.50015C17 3.22401 16.7761 3.00015 16.5 3.00015H14C11.3793 2.86961 9.14528 4.88025 9 7.50015V10.2002H6.5C6.22386 10.2002 6 10.424 6 10.7002V13.3002C6 13.5763 6.22386 13.8002 6.5 13.8002H9V20.5002C9 20.7763 9.22386 21.0002 9.5 21.0002H12.5C12.7761 21.0002 13 20.7763 13 20.5002V13.8002H15.62C15.8487 13.8034 16.0505 13.6511 16.11 13.4302L16.83 10.8302C16.8703 10.6804 16.8389 10.5205 16.7449 10.3971C16.6509 10.2738 16.5051 10.201 16.35 10.2002H13V7.50015C13.0515 6.98725 13.4845 6.59757 14 6.60015H16.5C16.7761 6.60015 17 6.3763 17 6.10015V3.50015Z" fill="#1A1A1A"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+                        {% if this.theme.contacts.twitter %}
+                        <a href="{{ this.theme.contacts.twitter }}" target="_blank" class="sotial-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.01" d="M0 0H24V24H0" fill="#1A1A1A"/>
+                                <path d="M8.08 19.9998C11.0674 20.0998 13.9683 18.9874 16.1229 16.9156C18.2775 14.8439 19.5028 11.9888 19.52 8.9998C20.1977 8.16121 20.7008 7.19563 21 6.1598C21.0456 5.99263 20.9889 5.81425 20.855 5.70417C20.7212 5.59408 20.5352 5.5728 20.38 5.6498C19.6531 5.99973 18.7839 5.84682 18.22 5.2698C17.5108 4.49313 16.5172 4.03676 15.466 4.00474C14.4147 3.97271 13.3952 4.36775 12.64 5.0998C11.599 6.108 11.1625 7.58807 11.49 8.9998C8.14 9.1998 5.84 7.6098 4 5.4298C3.88705 5.30189 3.70915 5.25287 3.54663 5.30488C3.3841 5.35689 3.26771 5.50008 3.25 5.6698C2.53212 9.65197 4.36687 13.6605 7.85 15.7198C6.70964 17.0276 5.10821 17.8445 3.38 17.9998C3.19018 18.0313 3.04138 18.18 3.00975 18.3698C2.97811 18.5596 3.07065 18.7485 3.24 18.8398C4.74352 19.5912 6.39923 19.988 8.08 19.9998Z" fill="#1A1A1A"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+                        {% if this.theme.contacts.linkedin %}
+                        <a href="{{ this.theme.contacts.linkedin }}" target="_blank" class="sotial-link">
+                            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect opacity="0.01" x="25" y="24" width="24" height="24" transform="rotate(180 25 24)" fill="#1A1A1A"/>
+                                    <path d="M16.15 8.39994C14.602 8.39462 13.1155 9.00514 12.0182 10.0969C10.9208 11.1886 10.3026 12.672 10.3 14.2199V20.0999C10.3 20.3386 10.3948 20.5675 10.5636 20.7363C10.7324 20.9051 10.9613 20.9999 11.2 20.9999H13.3C13.797 20.9999 14.2 20.597 14.2 20.0999V14.2199C14.1996 13.6686 14.4338 13.1432 14.8441 12.7749C15.2543 12.4066 15.8019 12.2303 16.35 12.2899C17.3559 12.4166 18.1079 13.2761 18.1 14.2899V20.0999C18.1 20.597 18.5029 20.9999 19 20.9999H21.1C21.597 20.9999 22 20.597 22 20.0999V14.2199C21.9973 12.672 21.3792 11.1886 20.2818 10.0969C19.1844 9.00514 17.6979 8.39462 16.15 8.39994Z" fill="#1A1A1A"/>
+                                <rect x="4" y="9.2998" width="4.5" height="11.7" rx="0.9" fill="#1A1A1A"/>
+                                <circle cx="6.25" cy="5.25" r="2.25" fill="#1A1A1A"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 footer-col">
+                    <div class="nav-title">{{ 'Services'|_ }}</div>
+                    <ul class="navigation">
+                        {% for service in OffersList.offers %}
+                            <li class="footer-item">
+                                <a class="footer-link" href="{{ 'services/listing'|page }}/{{ service.slug }}">{{ service.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-2 col-md-3 footer-col">
+                    <div class="nav-title">{{ 'Information'|_ }}</div>
+                    <ul class="navigation">
+                        {% for page in this.theme.navigation %}
+                        <li class="footer-item">
+                            <a class="footer-link" href="{{ page.link }}">{{ page.page }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-md-3 footer-col">
+                    <div class="nav-title">{{ 'Contacts'|_ }}</div>
+                    <ul class="navigation">
+                        {% if this.theme.contacts.phone or this.theme.contacts.phone2 %}
+                        <li class="footer-item">
+                            <span class="contact-item">
+                                <span class="icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.0835 11.6073V13.6396C15.0843 13.8283 15.0455 14.015 14.9698 14.1879C14.8941 14.3608 14.783 14.516 14.6437 14.6435C14.5044 14.771 14.34 14.8681 14.1609 14.9286C13.9818 14.989 13.792 15.0115 13.6038 14.9945C11.5151 14.768 9.50871 14.0557 7.74593 12.9148C6.10589 11.8747 4.71543 10.487 3.67328 8.8502C2.52613 7.08292 1.81224 5.0708 1.58943 2.97687C1.57247 2.78953 1.59478 2.60073 1.65493 2.42247C1.71509 2.24422 1.81178 2.08041 1.93884 1.94149C2.06591 1.80257 2.22056 1.69158 2.39296 1.61558C2.56536 1.53958 2.75173 1.50024 2.9402 1.50007H4.97653C5.30594 1.49683 5.6253 1.61325 5.87506 1.82763C6.12483 2.042 6.28797 2.33971 6.33408 2.66525C6.42003 3.31563 6.57942 3.95421 6.80922 4.56883C6.90055 4.8113 6.92031 5.07481 6.86618 5.32815C6.81204 5.58149 6.68627 5.81402 6.50377 5.99821L5.64173 6.85855C6.608 8.55453 8.01504 9.95878 9.71438 10.9231L10.5764 10.0628C10.761 9.88066 10.994 9.75514 11.2478 9.70111C11.5017 9.64709 11.7657 9.66681 12.0086 9.75796C12.6245 9.9873 13.2643 10.1464 13.916 10.2322C14.2457 10.2786 14.5469 10.4443 14.7621 10.6979C14.9774 10.9514 15.0918 11.2751 15.0835 11.6073Z" stroke="#343A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span>
+                                    {% if this.theme.contacts.phone %}<a href="tel:{{ this.theme.contacts.phone }}">{{ this.theme.contacts.phone }}</a>,{% endif %}
+                                    {% if this.theme.contacts.phone2 %}<a href="tel:{{ this.theme.contacts.phone2 }}">{{ this.theme.contacts.phone2 }}</a>{% endif %}
+                                </span>
+                            </span>
+                        </li>
+                        {% endif %}
+                        {% if this.theme.contacts.email %}
+                        <li class="footer-item">
+                            <a class="contact-item" href="mailto:{{ this.theme.contacts.email }}">
+                                <span class="icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 3H15C15.825 3 16.5 3.675 16.5 4.5V13.5C16.5 14.325 15.825 15 15 15H3C2.175 15 1.5 14.325 1.5 13.5V4.5C1.5 3.675 2.175 3 3 3Z" stroke="#343A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16.5 4.5L9 9.75L1.5 4.5" stroke="#343A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                {{ this.theme.contacts.email }}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if this.theme.contacts.address %}
+                        <li class="footer-item">
+                            <a class="contact-item" href="https://maps.google.com/?q={{ this.theme.contacts.address }}" target="_blank">
+                                <span class="icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path d="M15.75 7.5C15.75 12.75 9 17.25 9 17.25C9 17.25 2.25 12.75 2.25 7.5C2.25 5.70979 2.96116 3.9929 4.22703 2.72703C5.4929 1.46116 7.20979 0.75 9 0.75C10.7902 0.75 12.5071 1.46116 13.773 2.72703C15.0388 3.9929 15.75 5.70979 15.75 7.5Z" stroke="#343A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M9 9.75C10.2426 9.75 11.25 8.74264 11.25 7.5C11.25 6.25736 10.2426 5.25 9 5.25C7.75736 5.25 6.75 6.25736 6.75 7.5C6.75 8.74264 7.75736 9.75 9 9.75Z" stroke="#343A3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="18" height="18" fill="#343A3F"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </span>
+                                {{ this.theme.contacts.address }}
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5 bottom-bar-col">
+                    <span class="copywriter">© {{ 'now'|date('Y') }} All rights reserved</span>
+                </div>
+                <div class="col-lg-5 col-md-7 bottom-bar-col">
+                    <ul class="nav-list">
+                        <li><a href="#">{{ 'Privacy Policy'|_ }}</a></li>
+                        <li><a href="#">{{ 'Terms of Conditions'|_ }}</a></li>
+                        <li><a href="#">{{ 'English version'|_ }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 bottom-bar-col">
+                    <a class="biz-mark-home-page" href="https://biz-mark.ru" target="_blank">
+                        <svg class="biz-mark-logo" width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.302661 0.0930444V13.0786C1.22418 13.1406 2.42225 13.1716 3.89688 13.1716C5.3715 13.1716 6.53902 12.8364 7.39904 12.1657C8.25925 11.4951 8.68916 10.5263 8.68916 9.25948C8.68916 8.45199 8.48649 7.79383 8.08094 7.28463C7.67559 6.76292 7.12248 6.40892 6.42221 6.22283V6.18549C7.65103 5.61413 8.26544 4.62681 8.26544 3.22313C8.26544 2.21723 7.9152 1.4285 7.21473 0.857142C6.51446 0.285779 5.45137 0 4.02606 0C2.87092 0 1.62992 0.0310799 0.302854 0.0930444H0.302661ZM2.56962 7.48948H4.17324C4.88589 7.48948 5.439 7.63218 5.83216 7.91796C6.22533 8.19123 6.42201 8.60093 6.42201 9.14747C6.42201 10.402 5.63548 11.0291 4.06261 11.0291C3.64489 11.0291 3.14709 10.9982 2.56942 10.936V7.48948H2.56962ZM2.56962 2.19847C2.97516 2.16113 3.4484 2.14256 3.98913 2.14256C4.6281 2.14256 5.1257 2.28526 5.48212 2.57103C5.83835 2.8443 6.01666 3.2417 6.01666 3.76341C6.01666 4.32226 5.83835 4.75074 5.48212 5.04883C5.13808 5.34692 4.67722 5.49587 4.09955 5.49587H2.56962V2.19827V2.19847ZM12.8769 13.0972H15.1441V0.0559048H12.8769V13.0972ZM19.2303 2.19847H25.9948L18.8617 11.5322V13.0972H29.2206V10.9546H21.8846L29.0363 1.63942V0.0559048H19.2303V2.19847ZM0 25H1.23443V19.8978L3.47218 23.022H3.65301L5.87065 19.8675V25H7.09502V17.8997H5.93099L3.64295 21.2167L1.24449 17.8997H0V25H0ZM8.6441 25H9.88859L10.6212 23.1845H13.6217L14.3542 25H15.6687L12.6982 17.8796H11.6142L8.64372 25H8.6441ZM12.1263 19.4922L13.15 22.0179H11.0927L12.1262 19.4922H12.1263ZM18.4573 25V22.3424H19.3202L21.257 25H22.7523L20.5546 22.0992C20.9093 21.9774 21.2236 21.7476 21.498 21.4094C21.7722 21.0577 21.9093 20.6115 21.9093 20.0706C21.9093 18.6098 21.0596 17.8798 19.3604 17.8798C19.0995 17.8798 18.765 17.8831 18.3569 17.8897C17.9488 17.8966 17.5708 17.8999 17.2228 17.8999V25.0002H18.4573V25ZM19.1396 19.0561C19.2132 19.0495 19.2666 19.0459 19.3003 19.0459C20.17 19.0459 20.6047 19.391 20.6047 20.0806C20.6047 20.4185 20.4778 20.6858 20.2235 20.882C19.976 21.0781 19.6548 21.1762 19.26 21.1762H18.4573V19.0663H18.8284C18.9622 19.0594 19.0661 19.0561 19.1396 19.0561ZM24.3299 25H25.5643V21.3382L28.4342 25H29.9998L26.9291 21.2065L29.8191 17.8997H28.3339L25.5641 21.2673V17.8997H24.3297V25H24.3299Z" fill="black"/>
+                        </svg>
+                        Development by Web Studio Biz-Mark
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,22 @@
+.brands {
+    margin-top: 185px;
+    .brands-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: -10px;
+        .brand {
+            padding: 10px;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .brands {
+        margin-top: 100px;
+        .brand {
+            width: 25%;
+        }
+    }
+}

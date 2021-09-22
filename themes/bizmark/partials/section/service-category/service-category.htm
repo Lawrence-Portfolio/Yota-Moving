@@ -1,0 +1,19 @@
+<section class="category-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ category.name }}</h2>
+        <div class="category-listing">
+            <div class="row">
+                {% for item in category.service_list %}
+                <div class="col-lg-4 col-md-6 service-col">
+                    <a href="{{ 'services/card'|page({'category':category.slug, 'type':item.type, 'slug': item.slug}) }}">
+                        <div class="service-card">
+                            <img class="img-fluid" src="{{ item.preview_image.path }}" alt="{{ item.name }}">
+                            <h3 class="h2">{{ item.name }}</h3>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

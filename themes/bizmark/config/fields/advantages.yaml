@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: Название преимущества
+        span: full
+
+    description:
+        label: Описание
+        span: full
+        type: textarea
+
+    icon:
+        label: Иконка
+        span: full
+        type: mediafinder

@@ -1,0 +1,154 @@
+@import "../../build/scss/variables";
+@import "~tiny-slider/src/tiny-slider";
+
+
+/* Block */
+
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+@import '../../partials/block/card/review/review';
+
+/* Form */
+
+@import '../../partials/form/free-quote/free-quote';
+
+/* Slider */
+
+@import '../../partials/element/slider/slider';
+
+
+/* Section */
+
+@import '../../partials/section/hero/hero';
+@import '../../partials/section/service-category/service-category';
+@import '../../partials/section/testimonials/testimonials';
+@import '../../partials/section/description/description';
+@import '../../partials/section/free-quote/free-quote';
+@import '../../partials/section/useful-links/useful-links';
+
+
+.hero-section {
+    padding-top: 0;
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: -530px;
+            width: 472px;
+            height: 543px;
+            background-image: url(../../assets/img/svg/picture/3.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            right: -100px;
+            top: -65px;
+            width: 777px;
+            height: 492px;
+            background-image: url(../../assets/img/svg/picture/service.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position-y: 5px;
+            z-index: -1;
+        }
+    }
+}
+
+
+
+.description-section {
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            width: 568px;
+            height: 452px;
+            position: absolute;
+            top: -95px;
+            left: -95px;
+            background-image: url(../../assets/img/svg/picture/4.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        &::after {
+            content: "";
+            width: 690px;
+            height: 722px;
+            position: absolute;
+            top: -460px;
+            right: -760px;
+            background-image: url(../../assets/img/svg/treasure.svg);
+            z-index: -1;
+        }
+    }
+}
+
+.testimonials-section {
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            width: 1254px;
+            height: 916px;
+            position: absolute;
+            bottom: -350px;
+            left: -690px;
+            background-image: url(../../assets/img/svg/picture/5.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-section {
+        padding-bottom: 190px;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .hero-section .container {
+        &::before {
+            display: none;
+        }
+        &::after {
+            right: -30px;
+            top: -65px;
+            width: 610px;
+            height: 390px;
+        }
+    }
+    .description-section .container {
+        &::after {
+            display: none;
+        }
+    }
+    .testimonials-section .container {
+        &::before {
+            display: none;
+        }
+    }
+    .free-quote-section .container {
+        
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-section {
+        .container {
+            &::after {
+                display: none;
+            }
+        }
+    }
+    .description-section .container {
+        &::before {
+            display: none;
+        }
+    }
+}

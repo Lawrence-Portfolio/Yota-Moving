@@ -1,0 +1,55 @@
+.category-section {
+    .category-listing {
+        .row {
+            margin: 0 -10px;
+        }
+        .service-col {
+            padding: 0 10px;
+            margin-bottom: 50px;
+        }
+        .service-card {
+            .h2 {
+                font-size: 34px;
+                font-weight: 600;            
+                margin-bottom: 0;
+            }
+            img {
+                margin-bottom: 40px;
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .category-section {
+        .category-listing {
+            .service-col {
+                margin-bottom: 40px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+            .service-card {
+                img {
+                    margin-bottom: 25px;
+                }
+                .h2 {
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .category-section {
+        .category-listing {
+            .service-card {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

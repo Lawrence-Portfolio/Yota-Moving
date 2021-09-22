@@ -1,0 +1,14 @@
+.about-us-section {
+    .description {
+        max-width: 800px;
+        p {
+            font-size: 20px;
+            font-weight: 500;
+            color: #767676;
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

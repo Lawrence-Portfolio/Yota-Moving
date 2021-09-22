@@ -1,0 +1,32 @@
+{#<div class="load-more-wrap">#}
+{#    <button class="btn btn-primary-custom">Load more</button>#}
+{#</div>#}
+<nav class="pagination-nav">
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): '?page=' ~ (posts.currentPage-1) }) }}">
+                    <svg width="5" height="12" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.15347 18C9.64145 18.0027 10.1105 17.8152 10.4569 17.4788C10.8045 17.1413 11 16.682 11 16.2028C11 15.7236 10.8045 15.2643 10.4569 14.9268L4.38016 9.01418L10.2183 3.06559C10.9301 2.36463 10.9301 1.23256 10.2183 0.531596C9.87356 0.191372 9.40432 0 8.9148 0C8.42529 0 7.95604 0.191372 7.61132 0.531596L0.524801 7.72023C-0.174933 8.41904 -0.174933 9.53744 0.524801 10.2362L7.86835 17.4249C8.20118 17.7767 8.66387 17.9838 9.15347 18Z"/>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="page-item {{ posts.currentPage == page ? 'active' : null }}">
+                <a class="page-link" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): '?page=' ~ page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li class="page-item">
+                <a class="page-link" href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): '?page=' ~ (posts.currentPage+1) }) }}">
+                    <svg width="5" height="12" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.84653 18C1.35855 18.0027 0.889519 17.8152 0.543052 17.4788C0.195496 17.1413 0 16.682 0 16.2028C0 15.7236 0.195496 15.2643 0.543052 14.9268L6.61984 9.01418L0.781717 3.06559C0.0699009 2.36463 0.0699009 1.23256 0.781717 0.531596C1.12644 0.191372 1.59568 0 2.0852 0C2.57471 0 3.04396 0.191372 3.38868 0.531596L10.4752 7.72023C11.1749 8.41904 11.1749 9.53744 10.4752 10.2362L3.13165 17.4249C2.79882 17.7767 2.33613 17.9838 1.84653 18Z"/>
+                    </svg>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

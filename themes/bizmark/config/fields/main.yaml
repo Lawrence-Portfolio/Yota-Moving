@@ -1,0 +1,42 @@
+fields:
+    hero_block:
+        label: Первый экран
+        type: nestedform
+        form:
+            fields:
+                title:
+                    label: Заголовок (H1)
+                    span: left
+                subtitle:
+                    label: Подзаголовок
+                    span: right
+                blocks:
+                    label: Декоративные блоки
+                    span: full
+                    type: switch
+                    on: Вкл
+                    off: Выкл
+
+    description_block:
+        label: Блок с описанием
+        type: nestedform
+        form:
+            fields:
+                title:
+                    label: Заголовок
+                    span: full
+
+                description:
+                    label: Описание
+                    span: full
+                    type: textarea
+
+                image:
+                    label: Изображение
+                    span: full
+                    type: mediafinder
+
+    aboutus:
+        label: Краткое описание компании
+        span: full
+        type: textarea

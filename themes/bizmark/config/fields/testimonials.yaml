@@ -1,0 +1,19 @@
+fields:
+    date:
+        label: Дата
+        type: datepicker
+        mode: date
+        span: left
+
+    rating:
+        label: Оценка
+        span: right
+
+    text:
+        label: Отзыв
+        type: textarea
+        span: full
+
+    author:
+        label: Автор
+        span: full

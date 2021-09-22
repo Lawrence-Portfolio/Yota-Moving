@@ -1,0 +1,55 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Название
+        span: auto
+
+    slug:
+        label: Сссылка
+        span: auto
+        preset:
+            type: slug
+            field: name
+
+tabs:
+    fields:
+        offers@update:
+            tab: Услуги
+            type: partial
+            span: full
+
+        _offers@create:
+            tab: Услуги
+            type: hint
+            mode: tip
+            label: Добавление услуг
+            comment: Чтобы добавить услуги в эту новую категорию, сначала заполните название и ссылку, и создайте категорию. После создания, вы сможете добавить услуги.
+
+        preview_text:
+            label: Краткое описание
+            tab: Описание
+            type: textarea
+            size: small
+            span: auto
+
+        description:
+            label: Полное описание
+            tab: Описание
+            type: richeditor
+            size: small
+            span: auto
+
+        preview_image:
+            label: Превью изображение
+            tab: Изображения
+            type: fileupload
+            span: auto
+
+        description_image:
+            label: Изображение у описания
+            tab: Изображения
+            type: fileupload
+            span: auto

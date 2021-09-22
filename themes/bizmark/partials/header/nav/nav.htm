@@ -1,0 +1,52 @@
+<div class="nav-section">
+    <nav class="navigation">
+        <ul class="nav-list">
+            {% for category in categories %}
+
+                <li class="nav-item {{ category.offers is not empty ? 'dropdown' : '' }}">
+                    <a class="nav-link link" href="{{ 'services/listing'|page({'slug': category.slug}) }}">{{ category.name }}</a>
+
+                    {% if category.offers is not empty %}
+                        {% set homeOffers = category.offers().getHome().get() %}
+                        {% set businessOffers = category.offers().getBusiness().get() %}
+
+                        <button class="dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg class="svg-icon angle-down-icon" width="11" height="7">
+                                <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-down-icon'|theme }}"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-wrap two-column">
+                                {% if homeOffers is not empty %}
+                                <div>
+                                    <a class="list-title" href="{{ 'services/category-home'|page({'slug':category.slug}) }}">{{ 'Home'|_ }}</a>
+                                    <ul>
+                                        {% for offer in homeOffers %}
+                                            <li><a class="dropdown-item" href="{{ 'services/card'|page({'category':category.slug, 'type':offer.type, 'slug': offer.slug}) }}">{{ offer.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                {% if businessOffers is not empty %}
+                                <div>
+                                    <a class="list-title" href="{{ 'services/category-business'|page({'slug':category.slug}) }}">{{ 'Business'|_ }}</a>
+                                    <ul>
+                                        {% for offer in businessOffers %}
+                                            <li><a class="dropdown-item" href="{{ 'services/card'|page({'category':category.slug, 'type':offer.type, 'slug': offer.slug}) }}">{{ offer.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            {% for page in this.theme.navigation %}
+            <li class="nav-item">
+                <a class="nav-link link" href="{{ page.link }}">{{ page.page }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>

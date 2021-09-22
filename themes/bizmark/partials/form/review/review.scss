@@ -1,0 +1,70 @@
+.review-form {
+    .form-title {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    .form-subtitle {
+        color: $grey_color;
+        margin-bottom: 30px;
+    }
+    .rating-group {
+        margin: 0 -5px;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        .rating-label {
+            padding: 0 5px;
+            cursor: pointer;
+            svg {
+                fill: none;
+                stroke: #989898;
+            }
+        }
+        .rating-input {
+            display: none;
+        }
+    }
+    .rating-group > input:checked ~ label svg,
+    .rating-group:not(:checked) > label:hover svg,
+    .rating-group:not(:checked) > label:hover ~ label svg {
+        fill: $second_color;
+        stroke: $second_color;
+    }
+    .rating-group > input:checked + label:hover svg,
+    .rating-group > input:checked ~ label:hover svg,
+    .rating-group > label:hover ~ input:checked ~ label svg,
+    .rating-group > input:checked ~ label:hover ~ label svg {
+        fill: $second_color_hover;
+        stroke: $second_color_hover;
+    }
+    .from-group-wrap {
+        max-width: 350px;
+    }
+    .checkbox-block {
+        margin-bottom: 30px;
+        .custom-control-label {
+            line-height: 2;
+            &::after {
+                top: 5px;
+            }
+            &::before {
+                top: calc(5px + 4px);
+            }
+        }
+    }
+    button[type="submit"] {
+        height: 48px;
+        width: 100%;
+        font-weight: 600;
+    }
+}
+
+
+@media (max-width: 575px) {
+    .review-form {
+        .form-title {
+            font-size: 36px;
+        }
+    }
+}

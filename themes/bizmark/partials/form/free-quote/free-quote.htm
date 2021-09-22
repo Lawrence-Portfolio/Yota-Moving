@@ -1,0 +1,25 @@
+<form class="free-quote-form" data-request="freeQuoteForm::onFormSubmit">
+    {{ form_token() }}
+    <div class="form-title">
+        {{ 'We will call you back within 15 minutes.'|_ }}
+    </div>
+    <div class="inputs">
+        <div class="row">
+            <div class="col-lg-4 form-group">
+                <label for="contact-username" class="form-label">{{ 'Full Name'|_ }}</label>
+                <div class="input-wrap">
+                    <input id="contact-username" class="form-control icon person-icon" type="text" name="name" placeholder="Sabrina Willson" required>
+                </div>
+            </div>
+            <div class="col-lg-4 form-group">
+                <label for="contact-phone" class="form-label">{{ 'Type phone number'|_ }}</label>
+                <div class="input-wrap">
+                    <input id="contact-phone" class="form-control icon phone-icon" data-phone="true" type="text" name="phone" placeholder="Type phone number" required>
+                </div>
+            </div>
+            <div class="col-lg-4 form-group">
+                <button type="submit" class="btn btn-primary-custom">{{ 'Send'|_ }}</button>
+            </div>
+        </div>
+    </div>
+</form>

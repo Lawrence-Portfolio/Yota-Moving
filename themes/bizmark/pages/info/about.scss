@@ -1,0 +1,102 @@
+@import "../../build/scss/variables";
+@import "~tiny-slider/src/tiny-slider";
+
+/* Slider */
+
+@import '../../partials/element/slider/slider';
+
+
+
+/* Block */
+
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+@import '../../partials/block/card/review/review';
+
+/* Section */
+
+@import '../../partials/section/testimonials/testimonials';
+@import '../../partials/section/useful-links/useful-links';
+
+
+.about-section {
+    .description {
+        p {
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+.dignity-section {
+    .number-animation {
+        transition: all .2s ease-in-out;
+    }
+    .number-animation.hidden {
+        opacity: 0;
+    }
+    .number-animation.show {
+        opacity: 1;
+    }
+    .dignity-content {
+        .dignity-col {
+            &:nth-child(1) {
+                .image-wrap {
+                    padding: 30px;
+                }
+            }
+            &:nth-child(2) {
+                .image-wrap {
+                    padding: 40px;
+                }
+            
+            }
+            &:nth-child(3) {
+                .image-wrap {
+                    padding: 20px 35px 35px 35px;
+                }
+            
+            }
+            &:nth-child(4) {
+                .image-wrap {
+                    padding: 20px;
+                }
+            
+            }
+        }
+        .dignity-warp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            .description {
+                p {
+                    font-size: 24px;
+                    font-weight: 500;
+                }
+            }
+        }
+        .image-wrap {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 215px;
+            height: 215px;
+            background-color: #FFE26C;
+            border-radius: 50%;
+        }
+    }
+}
+@media (max-width: 991px) {
+    .dignity-section {
+        .dignity-content {
+            .dignity-col {
+                margin-bottom: 30px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    } 
+}

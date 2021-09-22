@@ -1,0 +1,14 @@
+<section class="latest-articles-section">
+    <div class="container">
+        <h2 class="h1 section-title">
+            {{ 'Latest articles'|_ }}
+        </h2>
+        <div class="row">
+            {% for post in blogPosts.posts %}
+                <div class="col-lg-4 article-col">
+                    {% partial 'block/article/article' post=post %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

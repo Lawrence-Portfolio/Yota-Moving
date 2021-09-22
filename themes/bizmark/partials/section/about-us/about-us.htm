@@ -1,0 +1,13 @@
+{% if this.theme.main.aboutus %}
+<section class="about-us-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'About us'|_ }}</h2>
+        <div class="description">
+            <p>
+                {{ this.theme.main.aboutus }}
+            </p>
+        </div>
+        {% partial 'block/brands/brands' %}
+    </div>
+</section>
+{% endif %}

@@ -1,0 +1,89 @@
+.nav-section {
+    display: flex;
+    align-items: center;
+    .nav-list {
+        margin: 0 -12px;
+        display: flex;
+    }
+    .nav-item {
+        padding: 0 12px;
+    }
+    .nav-item.dropdown {
+        display: flex;
+        &:hover {
+            .nav-link {
+                color: $second_color;
+            }
+            .svg-icon {
+                fill: $second_color;
+            }
+        }
+        .svg-icon {
+            transition: all .2s ease-in-out;
+        }
+        .dropdown-toggle-split {
+            padding-left: 10px;
+            padding-right: 0;
+        }
+    }
+    .nav-item.dropdown.show {
+        .nav-link {
+            color: $second_color;
+        }
+        .svg-icon {
+            fill: $second_color;
+        }
+    }
+    .nav-item.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    .dropdown-menu-wrap {
+        display: flex;
+        background-color: rgba($color: #FFE475, $alpha: .94);
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        box-shadow: 0px 4px 4px #EBF3FA;
+        &::before {
+            background-color: rgba($color: #FFE475, $alpha: .94);
+            border-top-color: rgba(0, 0, 0, 0.07);
+            border-left-color: rgba(0, 0, 0, 0.07);
+        }
+    }
+    .dropdown-menu {
+        top: 24px !important;
+        left: calc(100% - 94px) !important;
+        transform: none !important;
+        will-change: none !important;
+    }
+    .list-title {
+        display: block;
+        padding: 10px 25px 7px;
+        font-weight: 600;
+    }
+    .nav-link {
+        font-size: 15px;
+        padding: 0;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        .svg-icon {
+            margin-left: 5px;
+        }
+    }
+    .dropdown-item {
+        &:hover {
+            background-color: transparent;
+        }
+    }
+    .dropdown-link {
+        &:hover {
+            text-decoration: none;
+            color: #646464;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .nav-section {
+        display: none;
+    }
+}

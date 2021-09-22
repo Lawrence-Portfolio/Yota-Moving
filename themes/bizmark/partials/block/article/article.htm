@@ -1,0 +1,11 @@
+<article class="article-card">
+    <a href="{{ 'blog/listing'|page }}/{{ post.slug }}">
+        <picture>
+            {% set image = post.featured_images[0] %}
+            <img class="img-fluid" data-src="{{ image.filename }}" src="{{ image.path }}" alt="{{ image.description }}"/>
+        </picture>
+        <div class="article-title">
+            {{ post.title }}
+        </div>
+    </a>
+</article>

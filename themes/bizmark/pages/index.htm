@@ -1,0 +1,62 @@
+url = "/"
+layout = "default"
+title = "Главная страница"
+
+[emptyForm contactUsForm]
+group = "Свяжитесь со мной"
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Обратная связь с сайта - Свяжитесь со мной"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 3
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "blog/listing"
+postPage = "blog/card"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/index.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/index.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+{% put main_class %}
+    main-page
+{% endput %}
+{% set hero = {
+    title: this.theme.main.hero_block.title,
+    description: this.theme.main.hero_block.subtitle,
+    add_content: this.theme.main.hero_block.blocks
+} %}
+{% partial 'section/hero/hero' hero=hero %}
+{% partial 'section/dignity/dignity' title="In Our Account" %}
+{% partial 'section/description/description' %}
+{% partial 'section/advantage/advantage' %}
+{% partial 'section/service/service' %}
+{% partial 'section/book-one-click/book-one-click' %}
+{% partial 'section/testimonials/testimonials' %}
+{% partial 'section/about-us/about-us' %}
+{% partial 'section/latest-articles/latest-articles' %}
+{% partial 'section/contact-us/contact-us' %}
+
+{% put modals %}
+    {% partial 'modal/success' %}
+{% endput %}

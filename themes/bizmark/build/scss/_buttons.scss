@@ -1,0 +1,26 @@
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 172px;
+    height: 40px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    &:focus {
+        box-shadow: none;
+    }
+}
+.btn-primary-custom {
+    color: #000;
+    background-color: $second_color;
+    border-color: $second_color;
+    &:hover {
+        background-color: $second_color_hover;
+        border-color: $second_color_hover;
+    }
+}

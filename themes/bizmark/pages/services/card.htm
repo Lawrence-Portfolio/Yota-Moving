@@ -1,0 +1,155 @@
+url = "/:category/:type/:slug"
+layout = "default"
+title = "Карточка услуги"
+
+[OfferPage]
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/service-card.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/service-card.js', 'themes/bizmark/assets');
+}
+function onInit() {
+    $offer = $this->OfferPage->get();
+    if (empty($offer)) {
+        return $this->controller->run('404');
+    }
+    $this['offer'] = $offer;
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+{% set type_link = 'services/category-' ~ offer.type %}
+{% set links = [
+    {
+        title: offer.category.name,
+        active: false,
+        direct: true,
+        url: 'services/listing'|page({'slug':offer.category.slug}),
+    },
+    {
+        title: offer.type|capitalize,
+        active: false,
+        url: type_link|page({'slug':offer.category.slug}),
+        direct: true
+    },
+    {
+        title: offer.name,
+        active: true
+    }
+] %}
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="h1">
+                        {{ offer.name }}
+                    </h1>
+                    <p>
+                        {{ offer.preview_text }}
+                    </p>
+                    <div class="bottom-content">
+                        <button class="btn btn-primary-custom" data-toggle="modal" data-target="#modal-free-quote">{{ 'Free Quote'|_ }}</button>
+{#                        <a class="btn btn-primary-custom" href="{% if hero.link %}{{ hero.link }}{% else %}#{% endif %}">{{ 'Free Quote'|_ }}</a>#}
+                        <div>{{ 'We will call you back <br> within 15 minutes.'|_ }}</div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <picture>
+                        <img class="service-card-picture img-fluid" src="{{ offer.preview_image.path }}" alt="{{ offer.name }}">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="description-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="description">
+                    <h3 class="h1">
+                        Text description
+                    </h3>
+                    {{ offer.description|raw }}
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="description-bar">
+                    {% for category in categories %}
+                        {% set homeOffers = category.offers().getHome().get() %}
+                        {% set businessOffers = category.offers().getBusiness().get() %}
+                        <div class="links-group">
+                            <a class="toggle-colapse" href="#local-collapse" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="local-collapse">
+                                <svg width="5px" height="12px">
+                                    <use xlink:href="{{ 'assets/img/svg/sprite.svg#angle-right-icon'|theme }}">
+                                </svg>
+                                {{ category.name }}
+                            </a>
+                            <div class="collapse multi-collapse show" id="local-collapse">
+                                {% if homeOffers is not empty %}
+                                <div class="category">
+                                    <div class="category-title">{{ 'Home'|_ }}</div>
+                                    <ul class="service-list">
+                                    {% for offer in homeOffers %}
+                                        <li><a href="{{ 'services/card'|page({'category':category.slug, 'type':offer.type, 'slug': offer.slug}) }}">{{ offer.name }}</a></li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                {% if businessOffers is not empty %}
+                                <div class="category">
+                                    <div class="category-title">{{ 'Business'|_ }}</div>
+                                    <ul class="service-list">
+                                        {% for offer in businessOffers %}
+                                            <li><a href="{{ 'services/card'|page({'category':category.slug, 'type':offer.type, 'slug': offer.slug}) }}">{{ offer.name }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% partial 'section/free-quote/free-quote' %}
+{% partial 'section/testimonials/testimonials' %}
+{% partial 'section/advantage/advantage' title="Why us" %}
+{% partial 'section/have-any-question/have-any-question' %}
+{% set useful_links = [
+    {
+        title: 'FAQ'|_,
+        description: 'Answers <br> to popular questions.',
+        link: 'info/faq'|page()
+    },
+    {
+        title: 'Blog'|_,
+        description: 'We share interesting <br> articles on cargo transportation.'|_,
+        link: 'blog/listing'|page()
+    },
+    {
+        title: 'Reviews'|_,
+        description: 'Feedback <br> from our clients.',
+        link: 'info/reviews'|page()
+    },
+    {
+        title: 'About us'|_,
+        description: 'Information <br> about our company.'|_,
+        link: 'info/about'|page()
+    },
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}
+{% put modals %}
+    {% partial 'modal/success' %}
+{% endput %}

@@ -1,0 +1,41 @@
+.breadcrumbs-section {
+    padding-top: 70px;
+    padding-bottom: 50px;
+    .breadcrumb {
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        .breadcrumb-item {
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .breadcrumb-item.active {
+            color: #2B478B;
+        }
+        a {
+            color: $grey_color;
+        }
+        .breadcrumb-item + .breadcrumb-item {
+            padding-left: 30px;
+            &::before {
+                content: '';
+                position: absolute;
+                top: calc(50% - 4px);
+                left: calc(15px - 4px);
+                width: 5px;
+                height: 8px;
+                background-image: url(../../assets/img/svg/angle-right.svg);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .breadcrumbs-section {
+        padding-top: 20px;
+    }
+}

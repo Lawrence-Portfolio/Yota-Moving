@@ -1,0 +1,21 @@
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="h1">
+                {{ hero.title|raw }}
+            </h1>
+            <p>
+                {{ hero.description|raw }}
+            </p>
+            <div class="bottom-content {% if hero.add_content %}has-add-content{% endif %}">
+                <button class="btn btn-primary-custom" data-toggle="modal" data-target="#modal-free-quote">{{ 'Free Quote'|_ }}</button>
+                <div>
+                    {{ 'We will call you back <br> within 15 minutes.'|_ }}
+                </div>
+            </div>
+            {% if hero.add_content %}
+                {% partial 'section/hero/add-content' %}
+            {% endif %}
+        </div>
+    </div>
+</section>

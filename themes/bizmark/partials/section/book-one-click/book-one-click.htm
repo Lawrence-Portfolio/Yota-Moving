@@ -1,0 +1,58 @@
+<section class="book-one-click-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'Book With One Click'|_ }}</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <picture>
+                    <img class="delivery-picture" src="{{ 'assets/img/svg/book-one-click.svg'|theme }}" alt="">
+                </picture>
+            </div>
+            <div class="col-lg-6">
+                <div class="block">
+                    <div class="icon">
+                        <svg class="svg-icon" width="20" height="20">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#calculator-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="title">{{ 'A one-click moving cost calculator'|_ }}</h3>
+                        <p>
+                            {{ 'An accurate and free moving <br> estimate produced with the latest technology'|_ }}
+                        </p>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="icon">
+                        <svg class="svg-icon" width="25" height="25">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#reception-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="title">{{ 'Simple online reservation'|_ }}</h3>
+                        <p>
+                            {{ 'A dedicated move coordinator assigned to work closely <br>
+                            with you. A minimum of two calls prior to <br>
+                            your move to make sure that you are fully prepared.'|_ }}
+                        </p>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="icon">
+                        <svg class="svg-icon" width="19" height="22">
+                            <use xlink:href="{{ 'assets/img/svg/sprite.svg#interview-icon'|theme }}"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="title">{{ 'Request Page'|_ }}</h3>
+                        <p>
+                            {{ 'Inventory, Details, Chat, Information about move, <br>
+                            confirmation, contract, terms, cancelation policy <br>
+                            and etc.'|_ }}
+                        </p>
+                    </div>
+                </div>
+                <button class="btn btn-primary-custom" data-toggle="modal" data-target="#modal-free-quote">{{ 'Get a detailed quote'|_ }}</button>
+            </div>
+        </div>
+    </div>
+</section>

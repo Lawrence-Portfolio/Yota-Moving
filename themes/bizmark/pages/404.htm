@@ -1,0 +1,22 @@
+title = "Ошибка (404)"
+url = "/404"
+layout = "default"
+==
+function onStart() {
+    $this['page_style'] = mix('css/404.css', 'themes/bizmark/assets');
+}
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+
+<div class="error-section">
+    <div class="container">
+    <div class="error">
+            <div class="code">404</div>
+            <div class="message">
+                {{ 'Page not found'|_ }}
+            </div>
+        </div>
+    </div>
+</div>

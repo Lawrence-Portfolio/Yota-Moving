@@ -1,0 +1,125 @@
+@import 'variables';
+@import 'utils';
+@import 'typography';
+@import 'buttons';
+@import 'form';
+@import '../../partials/header/header';
+@import '../../partials/footer/footer';
+@import '../../partials/block/scroller/scroller';
+@import '../../partials/block/on-top/on-top';
+@import '../../partials/modal/modal';
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: $main_color;
+}
+body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+}
+main {
+    overflow: hidden;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+section {
+    padding-bottom: 150px;
+    .section-title {
+        margin-bottom: 80px;
+    }
+}
+
+
+a {
+    color: $main_color;
+    &:hover {
+        color: $main_color;
+    }
+}
+
+a.link {
+    transition: all .2s ease-in-out;
+    .svg-icon {
+        transition: all .2s ease-in-out;
+    }
+    &:hover {
+        color: $second_color;
+        .svg-icon {
+            fill: $second_color;
+        }
+    }
+}
+
+
+
+
+
+
+
+.dropdown-menu {
+    margin: 0;
+    padding: 25px 0 0;
+    border: none;
+    background-color: transparent;
+}
+.dropdown-menu-wrap {
+    padding: 10px 0 20px;
+    position: relative;
+    background-color: rgba($color: #fff, $alpha: .94);
+    border: 1px solid #ECEDED;
+    border-radius: 2px;
+    &::before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        background-color: rgba($color: #fff, $alpha: .94);
+        position: absolute;
+        top: -10px;
+        left: 65px;
+        border-top-color: #ECEDED;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-left-color: #ECEDED;
+        border-left-style: solid;
+        border-left-width: 1px;
+        transform: rotate(45deg);
+    }
+}
+.dropdown-item {
+    position: relative;
+    padding: 0 25px;
+    line-height: 2;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+
+
+@media (max-width: 991px) {
+    section {
+        padding-bottom: 100px;
+        .section-title {
+            margin-bottom: 60px;
+        }
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    section {
+        padding-bottom: 80px;
+        .section-title {
+            margin-bottom: 50px;
+        }
+    }
+}

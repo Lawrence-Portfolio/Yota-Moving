@@ -1,0 +1,43 @@
+<section class="contact-us-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'Contact us'|_ }}</h2>
+        <div class="row">
+            <div class="col-lg-6 left-section">
+                <div class="contact-wrap">
+                    {% if this.theme.contacts.phone or this.theme.contacts.phone2 %}
+                    <div class="contact-item phone">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.9856 11.3071C14.4127 10.7233 13.7728 10.7842 13.3236 11.4653C12.9809 11.9839 12.6383 12.5025 12.3029 13.0287C12.2112 13.1733 12.1258 13.2103 11.9899 13.1326C11.7221 12.9852 11.4412 12.8719 11.1817 12.7072C9.97084 11.9288 8.91876 10.88 7.96082 9.67802C7.48551 9.08082 7.05163 8.43438 6.72061 7.69165C6.65359 7.54153 6.65367 7.43856 6.74284 7.3024C7.0867 6.79604 7.41959 6.27837 7.75575 5.76038C8.22423 5.04035 8.1496 4.25673 7.54997 3.6343C7.20977 3.27958 6.87035 2.93301 6.53015 2.57828C6.17938 2.21633 5.83148 1.84998 5.47783 1.49241C4.90573 0.916785 4.26575 0.977735 3.81625 1.65478C3.47029 2.17369 3.14183 2.7033 2.78857 3.21467C2.46119 3.68652 2.326 4.2389 2.34629 4.86708C2.38103 5.88925 2.67155 6.8294 3.04137 7.73729C3.80029 9.61712 4.839 11.252 6.05022 12.7264C7.68654 14.7203 9.55802 16.243 11.6754 17.2686C12.6287 17.7297 13.6026 18.0611 14.6246 18.0338C15.3281 18.0162 15.9144 17.738 16.336 17.0101C16.6247 16.5131 16.9598 16.0529 17.2701 15.5744C17.7295 14.8635 17.6566 14.0632 17.0752 13.4596C16.3806 12.7392 15.6831 12.0231 14.9856 11.3071Z" fill="#6165D7"/>
+                        </svg>
+                        <span>
+                            {% if this.theme.contacts.phone %}<a href="tel:{{ this.theme.contacts.phone }}">{{ this.theme.contacts.phone }}</a>, {% endif %}
+                            {% if this.theme.contacts.phone2 %}<a href="tel:{{ this.theme.contacts.phone2 }}">{{ this.theme.contacts.phone2 }}</a> {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                    {% if this.theme.contacts.email %}
+                    <div class="contact-item email">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1667 3H4.5C3.11929 3 2 4.11929 2 5.5V13.8333C2 15.214 3.11929 16.3333 4.5 16.3333H16.1667C17.5474 16.3333 18.6667 15.214 18.6667 13.8333V5.5C18.6667 4.11929 17.5474 3 16.1667 3ZM16.1667 4.66667L10.75 8.39167C10.4922 8.54053 10.1745 8.54053 9.91667 8.39167L4.5 4.66667H16.1667Z" fill="#6165D7"/>
+                        </svg>
+                        <a href="mailto:{{ this.theme.contacts.email }}">{{ this.theme.contacts.email }}</a>
+                    </div>
+                    {% endif %}
+                    {% if this.theme.contacts.address %}
+                    <div class="contact-item address">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.5 0C5.36106 0 2 3.21826 2 7.19376C2 11.1637 9.5 20 9.5 20C9.5 20 17 11.1693 17 7.19376C16.9942 3.22383 13.6389 0 9.5 0ZM9.5 10.4844C7.56695 10.4844 5.9938 8.98107 5.9938 7.12138C5.9938 5.26726 7.56114 3.75835 9.5 3.75835C11.433 3.75835 13.0062 5.26169 13.0062 7.12138C13.0004 8.98107 11.433 10.4844 9.5 10.4844Z" fill="#6165D7"/>
+                        </svg>
+                        <div>
+                            {{ this.theme.contacts.address }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 right-section">
+                {% partial 'form/feedback/feedback' %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+.article-card {
+    img {
+        margin-bottom: 30px;
+    }
+    .article-title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .article-card {
+        img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .article-card {
+        .article-title {
+            font-size: 20px;
+        }
+    }
+}

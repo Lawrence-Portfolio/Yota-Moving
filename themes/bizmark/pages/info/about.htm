@@ -1,0 +1,134 @@
+title = "About us"
+url = "/about"
+layout = "default"
+==
+function onStart() {
+    $this['page_style'] = mix('css/about.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/about.js', 'themes/bizmark/assets');
+}
+==
+
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+{% endput %}
+
+
+{% set links = [
+    {
+        title: 'About us'|_,
+        url: 'info/about',
+        active: true
+    }
+] %}
+
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+<section class="about-section">
+    <div class="container">
+        <h1 class="h1 section-title">{{ 'About us'|_ }}</h1>
+        <div class="description">
+            {{ this.theme.aboutus.description|raw }}
+        </div>
+    </div>
+</section>
+<section class="our-team-section">
+    <div class="container">
+        <h2 class="h1 section-title">{{ 'Our team'|_ }}</h2>
+        <img class="img-fluid" src="{{ this.theme.aboutus.team_image|media }}" alt="Our team">
+    </div>
+</section>
+
+<section class="dignity-section">
+    <div class="container">
+        <div class="dignity-content">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 dignity-col">
+                    <div class="dignity-warp">
+                        <div class="image-wrap">
+                            <picture>
+                                <img class="img-fluid" src="{{ 'assets/img/svg/dignity/1.svg'|theme }}" alt="выполненных переездов">
+                            </picture>
+                        </div>
+                        <div class="description">
+                            <h3 class="h1 number-animation hidden" num-data="4000" data-step="100" data-duration="1000" data-delay="300">0</h3>
+                            <p>
+                                {{ 'completed <br> transfers'|_ }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 dignity-col">
+                    <div class="dignity-warp">
+                        <div class="image-wrap">
+                            <picture>
+                                <img class="img-fluid" src="{{ 'assets/img/svg/dignity/2.svg'|theme }}" alt="проеханных миль">
+                            </picture>
+                        </div>
+                        <div class="description">
+                            <h3 class="h1 number-animation hidden" num-data="25000" data-step="100" data-duration="1000" data-delay="300">0</h3>
+                            <p>
+                                {{ 'traveled <br> miles' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 dignity-col">
+                    <div class="dignity-warp">
+                        <div class="image-wrap">
+                            <picture>
+                                <img class="img-fluid" src="{{ 'assets/img/svg/dignity/3.svg'|theme }}" alt="упакованных грузов">
+                            </picture>
+                        </div>
+                        <div class="description">
+                            <h3 class="h1 number-animation hidden" num-data="12000" data-step="100" data-duration="1000" data-delay="300">0</h3>
+                            <p>
+                                {{ 'packaged <br> cargo'|_ }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 dignity-col">
+                    <div class="dignity-warp">
+                        <div class="image-wrap">
+                            <picture>
+                                <img class="img-fluid" src="{{ 'assets/img/svg/dignity/4.svg'|theme }}" alt="упакованных грузов">
+                            </picture>
+                        </div>
+                        <div class="description">
+                            <h3 class="h1 number-animation hidden" num-data="900" data-step="10" data-duration="1000" data-delay="300">0</h3>
+                            <p>
+                                {{ 'corporate <br> clients' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% partial 'section/testimonials/testimonials' %}
+
+{% set useful_links = [
+    {
+        title: 'FAQ'|_,
+        description: 'Answers <br> to popular questions.',
+        link: 'info/faq'|page()
+    },
+    {
+        title: 'Blog'|_,
+        description: 'We share interesting <br> articles on cargo transportation.'|_,
+        link: 'blog/listing'|page()
+    },
+    {
+        title: 'Reviews'|_,
+        description: 'Feedback <br> from our clients.',
+        link: 'info/reviews'|page()
+    }
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}

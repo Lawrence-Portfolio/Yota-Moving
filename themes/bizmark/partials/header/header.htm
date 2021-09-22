@@ -1,0 +1,22 @@
+<header>
+    {% partial 'header/top-bar/top-bar' %}
+    <div class="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 left-section">
+                    <a class="logo" href="/">
+                        <picture>
+                            <img class="img-fluid" src="{{ 'assets/img/logo.svg'|theme }}" alt="YOTA Moving Company">
+                        </picture>
+                    </a>
+                    {% partial 'header/nav/nav' %}
+                </div>
+                <div class="col-lg-2 right-section">
+                    <button class="btn btn-primary-custom" data-toggle="modal" data-target="#modal-free-quote">{{ 'Free Quote'|_ }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% partial 'mobile/menu/menu' %}
+{% partial 'mobile/bottom-strip/bottom-strip' %}

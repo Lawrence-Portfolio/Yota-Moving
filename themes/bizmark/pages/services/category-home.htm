@@ -1,0 +1,75 @@
+url = "/:slug/home"
+layout = "default"
+title = "Категория услуг"
+
+[CategoryPage]
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/service-category.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/service-category.js', 'themes/bizmark/assets');
+}
+function onInit() {
+    $category = $this->CategoryPage->get();
+    if (empty($category)) {
+        return $this->controller->run('404');
+    }
+    $this['category'] = $category;
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+{% endput %}
+
+{% set links = [
+    {
+        title: category.name,
+        active: false,
+        direct: true,
+        url: 'services/listing'|page({'slug':category.slug}),
+    },
+    {
+        title: 'Home'|_,
+        active: true
+    }
+] %}
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+{% set homeOffers = {
+    name: 'Home'|_,
+    slug: category.slug,
+    service_list: category.offers().getHome().get()
+} %}
+{% partial 'section/service-category/service-category' category=homeOffers %}
+{% partial 'section/description/description' %}
+{% partial 'section/free-quote/free-quote' %}
+{% set useful_links = [
+    {
+        title: 'FAQ'|_,
+        description: 'Answers <br> to popular questions.',
+        link: 'info/faq'|page()
+    },
+    {
+        title: 'Blog'|_,
+        description: 'We share interesting <br> articles on cargo transportation.'|_,
+        link: 'blog/listing'|page()
+    },
+    {
+        title: 'Reviews'|_,
+        description: 'Feedback <br> from our clients.',
+        link: 'info/reviews'|page()
+    },
+    {
+        title: 'About us'|_,
+        description: 'Information <br> about our company.'|_,
+        link: 'info/about'|page()
+    },
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}
+{% put modals %}
+    {% partial 'modal/success' %}
+{% endput %}

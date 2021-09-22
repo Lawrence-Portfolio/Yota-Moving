@@ -1,0 +1,25 @@
+<form class="feedback-form" data-request="contactUsForm::onFormSubmit">
+    {{ form_token() }}
+    <div class="form-group">
+        <label for="contact-email" class="form-label">{{ 'Email'|_ }}</label>
+        <div class="input-wrap">
+            <input id="contact-email" class="form-control icon email-icon" type="email" name="email" placeholder="example@gmail.com" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contact-username" class="form-label">{{ 'Full Name'|_ }}</label>
+        <div class="input-wrap">
+            <input id="contact-username" class="form-control icon person-icon" type="text" name="name" placeholder="Sabrina Willson" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contact-description" class="form-label">{{ 'Description'|_ }}</label>
+        <textarea id="contact-description" class="form-control" name="description" placeholder="Enter your text"></textarea>
+    </div>
+    <div class="form-group custom-control checkbox-block">
+        <input id="contact-checkbox" class="custom-control-input" type="checkbox" required>
+        <label for="contact-checkbox" class="custom-control-label">{{ 'I agree, and hereby consent Yota Moving Inc to use
+        my personal information to contact me regarding moving services and pricing.'|_ }}</label>
+    </div>
+    <button class="btn btn-primary-custom" type="submit">{{ 'Send Message'|_ }}</button>
+</form>

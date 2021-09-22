@@ -1,0 +1,10 @@
+fields:
+    description:
+        label: Текстовый блок "О нас"
+        span: full
+        type: richeditor
+
+    team_image:
+        label: Изображение "Наша команда"
+        span: full
+        type: mediafinder

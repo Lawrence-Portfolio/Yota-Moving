@@ -1,0 +1,27 @@
+.description-section {
+    .image-wrap {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .h1 {
+        margin-bottom: 40px;
+    }
+    p {
+        color: #767676;
+        margin-bottom: 30px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .description-section {
+        text-align: center;
+        img {
+            width: 100%;
+            margin-bottom: 40px;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+button.on-top {
+    position: fixed;
+    right: 70px;
+    bottom: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+    background-color: #FFCC00;
+    padding: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    svg {
+        transform: rotate(180deg)
+    }
+}
+button.on-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+@media (max-width: 991px) {
+    button.on-top {
+        right: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    button.on-top {
+        width: 40px;
+        height: 40px;
+        svg {
+            width: 18px;
+        }
+    }
+    
+}

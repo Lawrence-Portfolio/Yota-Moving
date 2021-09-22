@@ -1,0 +1,74 @@
+.dignity-block {
+    .dignity-warp {
+        position: relative;
+        display: flex;
+        img {
+            margin-right: 15px;
+        }
+        p {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        .circle {
+            position: absolute;
+            width: 213px;
+            height: 213px;
+            background: linear-gradient(83.16deg, #FFE26C 74.08%, rgba(255, 226, 108, 0) 90.42%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+    }
+    .dignity-col {
+        &:nth-child(1) {
+            .circle  {
+                top: -25px;
+                left: 115px;
+            } 
+        }
+        &:nth-child(2) {
+            .circle  {
+                top: -34px;
+                left: 34px;
+            } 
+        }
+        &:nth-child(3) {
+            .circle  {
+                top: -20px;
+                left: 60px;
+            } 
+        }
+    }
+}
+
+.number-animation {
+    transition: all .2s ease-in-out;
+}
+.number-animation.hidden {
+    opacity: 0;
+}
+.number-animation.show {
+    opacity: 1;
+}
+
+@media (min-width: 1450px) {
+    .dignity-block {
+        .dignity-content {
+            padding: 0 15px;
+            margin-left: -170px;
+            margin-right: -170px;
+        }
+    }
+}
+
+@media (max-width: 1449px) {
+    .dignity-block {
+        .dignity-warp {
+            .h1 {
+                font-size: 40px;
+            }
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+}

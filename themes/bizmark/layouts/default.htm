@@ -1,0 +1,84 @@
+description = "Динамический шаблон"
+
+[SeoToolbox]
+
+[CategoryList]
+
+[emptyForm freeQuoteForm]
+group = "Перезвоните мне"
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Перезвоните мне"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[emptyForm contactUsForm]
+group = "Перезвоните мне"
+messages_success = "Ваша форма была успешно отправлена!"
+messages_errors = "В вашей заявке содержатся ошибки."
+mail_enabled = 1
+mail_subject = "Перезвоните мне"
+reset_form = 1
+inline_errors = "disabled"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+
+[alternateHrefLangElements]
+
+[localePicker]
+forceUrl = 1
+==
+<?php
+function onStart() {
+    $this['vendor_style'] = mix('css/vendor.css', 'themes/bizmark/assets');
+    $this['layout_style'] = mix('css/common.css', 'themes/bizmark/assets');
+    $this['layout_script'] = mix('js/common.js', 'themes/bizmark/assets');
+}
+function onInit() {
+    $this['categories'] = $this->CategoryList->get();
+}
+?>
+==
+<!doctype html>
+<html lang="ru">
+<head>
+    {{ SeoToolbox.getHeadBegin()|raw }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex, nofollow">
+    {% component 'alternateHrefLangElements' %}
+    {% placeholder seo_tags default %}
+        {% component 'SeoToolbox' %}
+    {% endplaceholder %}
+    <link rel="stylesheet" href="{{ vendor_style }}">
+    <link rel="stylesheet" href="{{ layout_style }}">
+    {% placeholder page_style %}
+    {{ SeoToolbox.getHeadEnd()|raw }}
+</head>
+<body>
+    {{ SeoToolbox.getBodyBegin()|raw }}
+    {% partial 'header/header' %}
+    <main class="{% placeholder main_class %}">
+        {% page %}
+    </main>
+    {% partial 'footer/footer' %}
+    <script src="{{ layout_script }}"></script>
+    {% placeholder page_script %}
+    {{ SeoToolbox.getBodyEnd()|raw }}
+    {% partial 'block/scroller/scroller' %}
+    {% partial 'block/on-top/on-top' %}
+    {% partial 'modal/free-quote' %}
+    {% placeholder modals %}
+</body>
+</html>

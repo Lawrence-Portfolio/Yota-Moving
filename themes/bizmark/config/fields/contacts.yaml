@@ -1,0 +1,28 @@
+fields:
+    phone:
+        label: Основной телефон
+        span: left
+
+    phone2:
+        label: Второстепенный телефон
+        span: right
+
+    email:
+        label: Контактный email
+        span: right
+
+    address:
+        label: Адрес
+        span: left
+
+    facebook:
+        label: Facebook
+        span: left
+
+    twitter:
+        label: Twitter
+        span: right
+
+    linkedin:
+        label: LinkedIn
+        span: left

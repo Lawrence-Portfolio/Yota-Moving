@@ -1,0 +1,24 @@
+.free-quote-section {
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            width: 1453px;
+            height: 1089px;
+            position: absolute;
+            left: 275px;
+            top: 76px;
+            background-image: url(../../assets/img/svg/picture/6.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .free-quote-section .container::before {
+        display: none;
+    }
+}

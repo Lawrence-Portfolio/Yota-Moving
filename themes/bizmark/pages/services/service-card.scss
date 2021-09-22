@@ -1,0 +1,186 @@
+@import "../../build/scss/variables";
+@import "~tiny-slider/src/tiny-slider";
+
+/* Slider */
+
+@import '../../partials/element/slider/slider';
+
+
+
+/* Block */
+
+@import '../../partials/block/card/advantage/advantage';
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+@import '../../partials/block/card/review/review';
+
+/* Form */
+
+@import '../../partials/form/feedback/feedback';
+@import '../../partials/form/free-quote/free-quote';
+
+
+/* Section */
+
+@import '../../partials/section/hero/hero';
+@import '../../partials/section/description/description';
+@import '../../partials/section/testimonials/testimonials';
+@import '../../partials/section/free-quote/free-quote';
+@import '../../partials/section/advantage/advantage';
+@import '../../partials/section/have-any-question/have-any-question';
+@import '../../partials/section/useful-links/useful-links';
+
+.hero-section {
+    .container {
+        position: relative;
+        &::after {
+            content: "";
+            width: 568px;
+            height: 452px;
+            position: absolute;
+            top: -50px;
+            left: 560px;
+            background-image: url(../../assets/img/svg/picture/4.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            transform: rotate(-30deg);
+        }
+    }
+    .service-card-picture {
+        border-radius: 8px;
+    }
+}
+
+.description-bar {
+    margin-left: 80px;
+    padding: 30px 40px;
+    width: 380px;
+    border: 1px solid #F2F2F2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    background-color: #fff;
+    .links-group {
+        .toggle-colapse {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: 700;
+            &:hover {
+                text-decoration: none;
+            }
+            svg {
+                margin-right: 20px;
+            }
+        }
+    }
+    .category {
+        padding-left: 25px;
+        margin-bottom: 15px;
+        .category-title {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        .service-list {
+            padding-left: 28px;
+            a {
+                font-size: 20px;
+                &:hover {
+                    color: $grey_color;
+                }
+            }
+        }
+    }
+}
+
+
+.free-quote-section {
+    .container {
+        &::before {
+            content: "";
+            width: 1823px;
+            height: 1089px;
+            position: absolute;
+            left: 320px;
+            top: -650px;
+            background-image: url(../../assets/img/svg/picture/6.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    }
+}
+
+
+.testimonials-section {
+    .container {
+        position: relative;
+        &::before {
+            content: "";
+            width: 1823px;
+            height: 1089px;
+            position: absolute;
+            left: -550px;
+            top: 80px;
+            background-image: url(../../assets/img/svg/picture/6.svg);
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .hero-section .container::after {
+        width: 485px;
+        height: 386px;
+        top: -45px;
+        left: 460px;
+    }
+    .description-section {
+        .description {
+            margin-bottom: 60px;
+        }
+    }
+    .description-bar {
+        text-align: left;
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-section {
+        .container::after {
+            display: none;
+        }
+        .service-card-picture {
+            display: none;
+        }
+    }
+    .testimonials-section .container::before {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .description-bar {
+        padding: 20px;
+        .links-group {
+            .toggle-colapse {
+                font-size: 20px;
+            }
+        }
+        .category {
+            .category-title {
+                font-size: 18px;
+            }
+            .service-list {
+                padding-left: 18px;
+                a {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+} 

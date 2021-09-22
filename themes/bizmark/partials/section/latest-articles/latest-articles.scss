@@ -1,0 +1,21 @@
+.latest-articles-section {
+    .row {
+        margin: -10px;
+        .article-col {
+            padding: 10px;
+        }
+    }
+}
+
+
+@media (max-width: 991px) {
+    .latest-articles-section {
+        .article-col {
+            margin-bottom: 15px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+

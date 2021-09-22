@@ -1,0 +1,72 @@
+url = "/blog/:page?|^[0-9]+$"
+layout = "default"
+title = "Блог"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 6
+noPostsMessage = "Записей не найдено"
+sortOrder = "published_at desc"
+categoryPage = "blog/listing"
+postPage = "blog/card"
+==
+<?php
+function onStart() {
+    $this['page_style'] = mix('css/blog-listing.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/blog-listing.js', 'themes/bizmark/assets');
+}
+?>
+==
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+{% endput %}
+
+{% set posts = blogPosts.posts %}
+
+{% set links = [
+    { 
+        title: 'Blog',
+        url: 'blog/listing',
+        active: true
+    },
+] %}
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+
+<section class="articles-section">
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-lg-4 article-col">
+                    {% partial 'block/article/article' post=post %}
+                </div>
+            {% else %}
+                <div class="no-data">{{ blogPosts.noPostsMessage }}</div>
+            {% endfor %}
+        </div>
+        {% partial 'block/pagination/pagination' posts=posts %}
+    </div>
+</section>
+
+{% set useful_links = [
+    {
+        title: 'FAQ',
+        description: 'Ответы <br> на популярные вопросы.',
+        link: '#'
+    },
+    {
+        title: 'Reviews',
+        description: 'Отзывы <br> наших клиентов.',
+        link: '#'
+    },
+    {
+        title: 'About us',
+        description: 'Информация <br> о нашей компании.',
+        link: '#'
+    },
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}

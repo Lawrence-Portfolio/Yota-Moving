@@ -1,0 +1,74 @@
+title = "FAQ"
+url = "/faq"
+layout = "default"
+==
+function onStart() {
+    $this['page_style'] = mix('css/faq.css', 'themes/bizmark/assets');
+    $this['page_script'] = mix('js/faq.js', 'themes/bizmark/assets');
+}
+==
+
+{% put page_style %}
+    <link rel="stylesheet" href="{{ page_style }}">
+{% endput %}
+{% put page_script %}
+    <script src="{{ page_script }}"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+{% endput %}
+
+
+{% set links = [
+    {
+        title: 'FAQ'|_,
+        url: 'info/faq'|page,
+        active: true
+    }
+] %}
+
+{% partial 'block/breadcrumbs/breadcrumbs' links=links %}
+
+<section class="faq-section">
+    <div class="container">
+        <h1 class="h1 section-title">{{ 'FAQ'|_ }}</h1>
+        <div class="questions-container">
+            {% for item in this.theme.faq %}
+                <div class="question">
+                    <a class="question-name" data-toggle="collapse" href="#question-{{ loop.index }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        {{ item.question }}
+                        <svg width="11px" height="7px" viewBox="0 0 11 7" fill="#1A1A1A" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.53674e-06 1.49994C-0.00152683 1.23414 0.102823 0.978658 0.290009 0.789939C0.477777 0.600626 0.733372 0.494141 1.00001 0.494141C1.26665 0.494141 1.52224 0.600626 1.71001 0.789939L5.00001 4.09994L8.31001 0.919939C8.70005 0.532215 9.32997 0.532215 9.72001 0.919939C9.90932 1.10771 10.0158 1.3633 10.0158 1.62994C10.0158 1.89658 9.90932 2.15217 9.72001 2.33994L5.72001 6.19994C5.33117 6.58108 4.70885 6.58108 4.32001 6.19994L0.32001 2.19994C0.124224 2.01864 0.00901222 1.76662 9.53674e-06 1.49994Z" />
+                        </svg>
+                    </a>
+                    <div class="answer-wrap collapse" id="question-{{ loop.index }}">
+                        <div class="answer">
+                            {{ item.answer }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% partial 'section/free-quote/free-quote' %}
+{% set useful_links = [
+    {
+        title: 'Blog'|_,
+        description: 'We share interesting <br> articles on cargo transportation.'|_,
+        link: 'blog/listing'|page()
+    },
+    {
+        title: 'Reviews'|_,
+        description: 'Feedback <br> from our clients.',
+        link: 'info/reviews'|page()
+    },
+    {
+        title: 'About us'|_,
+        description: 'Information <br> about our company.'|_,
+        link: 'info/about'|page()
+    },
+] %}
+{% partial 'section/useful-links/useful-links' useful_links=useful_links %}
+{% put modals %}
+    {% partial 'modal/success' %}
+{% endput %}

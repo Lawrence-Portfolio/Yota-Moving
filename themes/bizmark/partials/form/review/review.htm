@@ -1,0 +1,77 @@
+<form class="review-form" data-request="reviewsForm::onFormSubmit">
+    {{ form_token() }}
+    <div>
+        <div class="form-title">
+            {{ 'Review Message'|_ }}
+        </div>
+        <div class="form-subtitle">
+            {{ 'Send review please, it will help us to be better!'|_ }}
+        </div>
+        <div class="form-group">
+            <label class="form-label">{{ 'Rating'|_ }}</label>
+            <div class="rating-group">
+                <input id="star-5" class="rating-input" type="radio" name="review-rating" value="5">
+                <label for="star-5" class="rating-label">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#star-icon'|theme }}">
+                    </svg>
+                </label>
+                <input id="star-4" class="rating-input" type="radio" name="review-rating" value="4" checked>
+                <label for="star-4" class="rating-label">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#star-icon'|theme }}">
+                    </svg>
+                </label>
+                <input id="star-3" class="rating-input" type="radio" name="review-rating" value="3">
+                <label for="star-3" class="rating-label">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#star-icon'|theme }}">
+                    </svg>
+                </label>
+                <input id="star-2" class="rating-input" type="radio" name="review-rating" value="2">
+                <label for="star-2" class="rating-label">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#star-icon'|theme }}">
+                    </svg>
+                </label>
+                <input id="star-1" class="rating-input" type="radio" name="review-rating" value="1">
+                <label for="star-1" class="rating-label">
+                    <svg width="20px" height="20px">
+                        <use xlink:href="{{ 'assets/img/svg/sprite.svg#star-icon'|theme }}">
+                    </svg>
+                </label>
+            </div>
+        </div>
+        <div class="from-group-wrap">
+            <div class="form-group form-group-reverse">
+                <input id="review-email" class="form-control email-icon" name="email" type="email" placeholder="example@gmail.com" required>
+                <label for="review-email" class="form-label">
+                    <div class="valid">{{ 'Email'|_ }}</div>
+                    <div class="invalid">{{ 'Fill in the field Email'|_ }}</div>
+                </label>
+
+            </div>
+            <div class="form-group form-group-reverse">
+                <input id="review-username" class="form-control person-icon" name="name" type="text" placeholder="Sabrina Willson" required>
+                <label for="review-username" class="form-label">
+                    <div class="valid">{{ 'Full Name'|_ }}</div>
+                    <div class="invalid">{{ 'Fill in the field Full Name'|_ }}</div>
+                </label>
+
+            </div>
+            <div class="form-group">
+                <label for="review-description" class="form-label">
+                    <div class="valid">{{ 'Description'|_ }}</div>
+                    <div class="invalid">{{ 'Description'|_ }}</div>
+                </label>
+                <textarea id="review-description" class="form-control no-icon" name="description" placeholder="Enter your text"></textarea>
+            </div>
+            <div class="form-group custom-control checkbox-block">
+                <input id="review-checkbox" class="custom-control-input" type="checkbox" required>
+                <label for="review-checkbox" class="custom-control-label">{{ 'I agree, and hereby consent Yota Moving Inc
+                to use my personal information to contact me regarding moving services and pricing.'|_ }}</label>
+            </div>
+            <button type="submit" class="btn btn-primary-custom">{{ 'Send Message'|_ }}</button>
+        </div>
+    </div>
+</form>

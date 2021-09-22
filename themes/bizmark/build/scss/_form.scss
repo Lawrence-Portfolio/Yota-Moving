@@ -1,0 +1,183 @@
+.form-group-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: $grey_color;
+    .invalid {
+        display: none;
+    }
+}
+.form-control {
+    padding: 15px;
+    height: 48px;
+    border-radius: 6px;
+    border: 2px solid #D2D2D2;
+    &:focus {
+        box-shadow: none;
+    }
+}
+.was-validated {
+    .form-control:valid ~ label.form-label, 
+    .form-control.is-valid ~ label.form-label {
+        .valid {
+            display: block;
+        }
+        .invalid {
+            display: none;
+        }
+    }
+    .form-control:invalid ~ label.form-label, 
+    .form-control.is-invalid ~ label.form-label {
+        color: $error_color;
+        .valid {
+            display: none;
+        }
+        .invalid {
+            display: block;
+        }
+    }
+    .form-control:valid, 
+    .form-control.is-valid {
+        border-color: #D2D2D2;
+        &:focus {
+            border-color: #80bdff;
+            box-shadow: none;
+        }
+    }
+    .form-control:invalid, 
+    .form-control.is-invalid {
+        border-color: $error_color;
+        &:focus {
+            border-color: $error_color;
+            box-shadow: none;
+        }
+    }
+    .custom-control-input:valid ~ .custom-control-label, 
+    .custom-control-input.is-valid ~ .custom-control-label {
+        color: $grey_color;
+    }
+    .custom-control-input:invalid ~ .custom-control-label, 
+    .custom-control-input.is-invalid ~ .custom-control-label {
+        color: $error_color;
+    }
+    // .custom-control-input:valid:not(:checked) ~ .custom-control-label, 
+    // .custom-control-input.is-valid:not(:checked) ~ .custom-control-label {
+    //     &::before {
+
+    //     }
+    // }
+    .custom-control-input:invalid:not(:checked) ~ .custom-control-label, 
+    .custom-control-input.is-invalid:not(:checked) ~ .custom-control-label {
+        &::after {
+            border-color: $error_color;
+        }
+    }
+    .custom-control-input:valid:checked ~ .custom-control-label, 
+    .custom-control-input.is-valid:checked ~ .custom-control-label {
+        &::before {
+            background-color: #6165D7;
+        }
+    }
+    .form-control.no-icon:valid,
+    .form-control.no-icon.is-valid {
+        background-image: none;
+    }
+    .form-control.person-icon.is-valid,
+    .form-control.person-icon:valid {
+        background-image: url(../../assets/img/svg/icons/person-icon.svg);
+    }
+    .form-control.email-icon.is-valid,
+    .form-control.email-icon:valid {
+        background-image: url(../../assets/img/svg/icons/evenlope-blue.svg);
+    }
+    .form-control.phone-icon.is-valid,
+    .form-control.phone-icon:valid {
+        background-image: url(../../assets/img/svg/icons/phone-blue-2.svg);
+    }
+    .form-control.person-icon.is-invalid,
+    .form-control.person-icon:invalid {
+        background-image: url(../../assets/img/svg/icons/person-icon.svg);
+    }
+    .form-control.email-icon.is-invalid,
+    .form-control.email-icon:invalid {
+        background-image: url(../../assets/img/svg/icons/evenlope-blue.svg);
+    }
+    .form-control.phone-icon.is-invalid,
+    .form-control.phone-icon:invalid {
+        background-image: url(../../assets/img/svg/icons/phone-blue-2.svg);
+    }
+}
+
+.custom-control {
+    padding-left: 0;
+}
+.custom-control-input:checked ~ .custom-control-label {
+    &::before {
+        box-shadow: none;
+        background-color: #6165D7;
+    }
+    &::after {
+        background-image: none;
+    }
+}
+
+.custom-control-input:focus ~ .custom-control-label {
+    &::before {
+        box-shadow: none;
+    }
+}
+
+.custom-control-label {
+    padding-left: 30px;
+    &::after, &::before {
+        border-radius: 50%;
+    }
+    &::before {
+        left: calc(0px + 4px);
+        top: calc(3px + 4px);
+        width: 8px;
+        height: 8px;
+        border: none;
+    }
+    &::after {
+        left: 0;
+        top: 3px;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #D2D2D2;
+    }
+}
+
+.checkbox-block {
+    .custom-control-label {
+        font-size: 14px;
+        color: #767676;
+    }
+}
+input.icon {
+    padding-right: 40px;
+}
+input.person-icon {
+    background-image: url(../../assets/img/svg/icons/person-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+}
+input.email-icon {
+    background-image: url(../../assets/img/svg/icons/evenlope-blue.svg);
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+}
+input.phone-icon {
+    background-image: url(../../assets/img/svg/icons/phone-blue-2.svg);
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+}
+input.calendar-icon {
+    background-image: url(../../assets/img/svg/icons/calendar.svg);
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+}

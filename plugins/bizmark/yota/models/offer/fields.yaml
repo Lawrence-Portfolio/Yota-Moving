@@ -1,0 +1,43 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Название
+        span: auto
+
+    slug:
+        label: Сссылка
+        span: auto
+        preset:
+            type: slug
+            field: name
+
+    type:
+        label: Тип услуги
+        type: dropdown
+        options:
+            home: Home
+            business: Business
+
+tabs:
+    fields:
+        preview_text:
+            label: Краткое описание
+            tab: Описание
+            type: textarea
+            size: tiny
+            span: full
+
+        description:
+            label: Полное описание
+            tab: Описание
+            type: richeditor
+            span: full
+
+        preview_image:
+            label: Превью изображение
+            tab: Изображения
+            type: fileupload
+            span: auto

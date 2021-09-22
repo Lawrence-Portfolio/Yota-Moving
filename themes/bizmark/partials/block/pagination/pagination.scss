@@ -1,0 +1,102 @@
+.load-more-wrap {
+    padding: 100px 0 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-nav {
+    display: flex;
+    justify-content: center;
+    .page-item[aria-current="page"] {
+        .page-link {
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 3px;
+
+                width: 10px;
+                height: 1px;
+                background-color: $grey_color;
+            }
+        }
+    }
+    .page-item {
+        &:first-child {
+            margin-right: 10px;
+            .page-link {
+                background-color: #F5F5F5;
+                &:hover {
+                    background-color: #F5F5F5!important;
+                }
+            }
+        }
+        &:last-child {
+            margin-left: 10px;
+            .page-link {
+                background-color: #F5F5F5;
+                &:hover {
+                    background-color: #F5F5F5!important;
+                }
+            }
+        }
+    }
+    .page-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        color: $grey_color;
+        border: none;
+        border-radius: 50%!important;
+        transition: all .2s ease-in-out;
+        font-weight: 500;
+        background-color: transparent;
+        &:focus {
+            box-shadow: none;
+        }
+        svg {
+            transition: all .2s ease-in-out;
+            fill: $grey_color;
+        }
+    }
+    .page-item:not([aria-current="page"]) {
+        .page-link {
+            &:hover {
+                color: #232323;
+                background-color: $second_color;
+                svg {
+                    fill: #232323;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 575px) {
+    .load-more-wrap {
+        padding: 60px 0 40px;
+    }
+    .pagination-nav {
+        .pagination {
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            padding: 0 40px;
+        }
+        .page-item {
+            &:last-child, &:first-child {
+                position: absolute;
+            }
+            &:first-child {
+                left: 0;
+            }
+            &:last-child {
+                right: 0;
+            }
+        }
+    }
+}

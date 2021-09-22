@@ -1,0 +1,6 @@
+name: "Yota Template"
+description: "Custom template for Yota"
+author: "Biz-Mark"
+homepage: "https://biz-mark.ru"
+code: "bizmark"
+form: ~/themes/bizmark/config/theme_fields.yaml

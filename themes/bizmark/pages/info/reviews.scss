@@ -1,0 +1,68 @@
+@import "../../build/scss/variables";
+
+/* Block */
+
+@import '../../partials/block/breadcrumbs/breadcrumbs';
+@import '../../partials/block/card/review/review';
+@import '../../partials/block/pagination/pagination';
+
+
+/* Section */
+
+@import '../../partials/section/dignity/dignity';
+
+
+/* Form */
+
+@import '../../partials/form/review/review';
+
+.reviews-hero-section {
+    .section-title {
+        margin-bottom: 50px;
+    }
+    .widget {
+        .XYyMK {
+            margin: 0;
+            position: absolute;
+            z-index: 1;
+        }
+        .eapps-widget-toolbar {
+            display: none;
+        }
+    }
+}
+
+.reviews-section {
+    .container {
+        position: relative;
+        &::before {
+            width: 1453px;
+            height: 1089px;
+            content: "";
+            position: absolute;
+            right: -590px;
+            top: 220px;
+            background-image: url(../../assets/img/svg/picture/10.svg);
+        }
+    }
+    .row {
+        margin: -10px;
+    }
+    .review-col {
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .reviews-section .container::before {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .reviews-hero-section .widget .XYyMK {
+        position: relative;
+        margin-top: 40px;
+    }
+}

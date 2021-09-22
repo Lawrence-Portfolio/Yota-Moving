@@ -1,0 +1,32 @@
+.have-any-question-section {
+    .container {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 560px;
+            top: 90px;
+            width: 830px;
+            height: 652px;
+            background-image: url(../../assets/img/svg/picture/feedback.svg);
+            background-size: contain;
+            z-index: -1;
+        }
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .have-any-question-section .container::before {
+        left: 470px;
+        top: 90px;
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 991px) {
+    .have-any-question-section .container::before {
+        display: none;
+    }
+}

@@ -1,0 +1,43 @@
+tabs:
+    fields:
+        main:
+            tab: Главная страница
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/main.yaml'
+
+        navigation:
+            tab: Навигация
+            type: repeater
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/navigation.yaml'
+
+        contacts:
+            tab: Контакты
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/contacts.yaml'
+
+        faq:
+            tab: FAQ
+            type: repeater
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/faq.yaml'
+
+        advantages:
+            tab: Преимущества
+            type: repeater
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/advantages.yaml'
+
+        testimonials:
+            tab: Отзывы
+            type: repeater
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/testimonials.yaml'
+
+        aboutus:
+            tab: О нас
+            type: nestedform
+            usePanelStyles: false
+            form: '~/themes/bizmark/config/fields/aboutus.yaml'
